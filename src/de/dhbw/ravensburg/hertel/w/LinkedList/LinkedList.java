@@ -8,7 +8,7 @@ public class LinkedList<T> extends AbstractList<T> {
 
     private LinkedListElement head;
 
-    //TODO: impl
+
     @Override
     public void removeAll() {
         this.setHead(null);
@@ -130,21 +130,40 @@ public class LinkedList<T> extends AbstractList<T> {
 
     @Override
     public void bubbleSort() {
-
+        //TODO: impl
     }
 
     @Override
     public void quickSort() {
-
+        //TODO:impl
     }
 
     @Override
     public void otherSort() {
-
+        //TODO://impl
     }
 
     @Override
     public int compareTo(Object o) {
+        return 0;
+        //TODO:impl
+    }
+
+    public void addElementAtCertainPosition(T value){
+        //TODO: impl
+    }
+
+    public void removeElementFromCertainPosition(){
+        //TODO: impl
+    }
+
+    public T getElementFromCertainPosition(){
+        //TODO: impl
+        return null;
+    }
+
+    public int getPositionOfObj(T value){
+        //TODO: impl
         return 0;
     }
 }
