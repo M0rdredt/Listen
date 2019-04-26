@@ -15,34 +15,41 @@ public class LinkedList<T> extends AbstractList<T> {
     }
 
     @Override
-    public boolean contains() {
+    public boolean contains(T value) {
+        LinkedListElement e = new LinkedListElement(value);
+        LinkedListElement x = this.getHead();
+        while(x.getNext()!= null){
+            if(e.equals(x.getNext()))
+                return true;
+            x = x.getNext();
+        }
         return false;
     }
 
     @Override
-    public boolean containsAll() {
-        return false;
+    public boolean containsAll(AbstractList list) {
+        T[] array = (T[]) list.returnAsArray();
+        if(list.isEmpty())
+            throw new IllegalArgumentException("List: " + list.toString() +" does not contain anything");
+        for (T value:
+             array) {
+            if(!this.contains(value))return false;
+        }
+        return true;
     }
 
     @Override
-    public void removeParticularObj() {
-
+    public void removeParticularObj(T value) {
+        if(this.contains(value)){
+            //TODO: code for removal
+        }else
+            throw new IllegalArgumentException("The element: "+value.toString()+" is not contained within "+this.toString());
     }
 
     @Override
     public boolean isEmpty() {
         return  this.getHead() == null;
     }
-
-
-
-
-
-
-
-
-
-
 
     @Override
     public int size() {
