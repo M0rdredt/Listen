@@ -6,7 +6,7 @@ public class LinkedListElement<T> {
     private LinkedListElement next;
 
     LinkedListElement(T value) {
-        //TOdo: write init constructor code
+        this.value=value;
     }
     //Todo: write equals method
     T getValue() {
@@ -24,4 +24,8 @@ public class LinkedListElement<T> {
     void setNext(LinkedListElement next) {
         this.next = next;
     }
+    public boolean hasNext(){
+        return next!=null;
+    }
+
 }

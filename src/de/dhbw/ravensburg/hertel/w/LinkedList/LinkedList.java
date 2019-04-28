@@ -18,7 +18,7 @@ public class LinkedList<T> extends AbstractList<T> {
     public boolean contains(T value) {
         LinkedListElement e = new LinkedListElement(value);
         LinkedListElement x = this.getHead();
-        while(x.getNext()!= null){
+        while(x.hasNext()){
             if(e.equals(x.getNext()))
                 return true;
             x = x.getNext();
@@ -55,7 +55,7 @@ public class LinkedList<T> extends AbstractList<T> {
     public int size() {
         int size = 0;
         LinkedListElement e =this.getHead();
-        while(e.getNext()!=null){
+        while(e.hasNext()){
             size++;
             e = e.getNext();
         }
@@ -72,7 +72,7 @@ public class LinkedList<T> extends AbstractList<T> {
         if(e==null)
             this.setHead(value);
         else{
-            while(e.getNext()!= null){
+            while(e.hasNext()){
                 e=e.getNext();
             }
             e.setNext(value);
@@ -84,7 +84,7 @@ public class LinkedList<T> extends AbstractList<T> {
     public void addAll(AbstractList list) {
         if(list instanceof LinkedList) {
             LinkedListElement e = ((LinkedList) list).getHead();
-            while(e.getNext() != null){
+            while(e.hasNext()){
                 this.add(e);
             }
         }
@@ -99,7 +99,7 @@ public class LinkedList<T> extends AbstractList<T> {
         T[] ts = (T[]) Array.newInstance(c,this.size());
         int counter =0;
         LinkedListElement e = this.getHead();
-        while(e.getNext()!=null){
+        while(e.hasNext()){
             ts[counter]=(T)e.getValue();
             counter++;
             e = e.getNext();
@@ -120,9 +120,15 @@ public class LinkedList<T> extends AbstractList<T> {
     @Override
     public String toString() {
         StringBuilder bs =new StringBuilder("[");
-        LinkedListElement element = this.getHead();
-        while(element.getNext()!= null){
-            bs.append(element.toString()).append(", ");
+        if(this.getHead() != null) {
+            LinkedListElement element = this.getHead();
+            while (element.hasNext()) {
+                bs.append(element.getValue().toString()).append(", ");
+                element = element.getNext();
+            }
+            if (!element.hasNext() && element.getValue() != null) {
+                bs.append(element.getValue().toString());
+            }
         }
         bs.append("]");
         return bs.toString();
