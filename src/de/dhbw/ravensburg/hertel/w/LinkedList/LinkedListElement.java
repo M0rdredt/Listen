@@ -4,12 +4,13 @@ public class LinkedListElement<T> {
     //TODO: Evtl. AbstractElement?
     private T value;
     private LinkedListElement next;
+    private int index = 0;
 
     LinkedListElement(T value) {
         this.value=value;
     }
     //Todo: write equals method
-    T getValue() {
+    public T getValue() {
         return value;
     }
 
@@ -17,15 +18,24 @@ public class LinkedListElement<T> {
         this.value = value;
     }
 
-    LinkedListElement getNext() {
+    public LinkedListElement getNext() {
         return next;
     }
 
     void setNext(LinkedListElement next) {
         this.next = next;
+        this.next.setIndex(index+1);
     }
     public boolean hasNext(){
         return next!=null;
     }
 
+    private void setIndex(int index){
+        this.index=index;
+        System.out.println(index);
+    }
+
+    public int getIndex() {
+        return index;
+    }
 }

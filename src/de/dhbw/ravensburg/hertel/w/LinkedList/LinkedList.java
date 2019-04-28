@@ -91,8 +91,6 @@ public class LinkedList<T> extends AbstractList<T> {
 
     }
 
-
-
     @Override
     public T[] returnAsArray() {
         Class c =this.getHead().getClass();
@@ -107,9 +105,7 @@ public class LinkedList<T> extends AbstractList<T> {
         return ts;
     }
 
-
-
-    private LinkedListElement getHead() {
+    public LinkedListElement getHead() {
         return head;
     }
 
@@ -163,13 +159,40 @@ public class LinkedList<T> extends AbstractList<T> {
         //TODO: impl
     }
 
-    public T getElementFromCertainPosition(){
-        //TODO: impl
-        return null;
+    public T getElementFromCertainPosition(int index){
+        LinkedListElement current = getHead();
+        while(current.hasNext()){
+            if(current.getIndex() == index){
+                return (T) current;
+            }
+            current = current.getNext();
+        }
+      return null;
     }
 
     public int getPositionOfObj(T value){
         //TODO: impl
         return 0;
+    }
+    //Would be better to do it with indexes - implemented indexVariable to Elements
+    //not working -- ToDo: do better
+    public void swapElements(LinkedListElement element, LinkedListElement toBeSwapped){
+        LinkedListElement storage = toBeSwapped.getNext();
+        LinkedListElement current = this.getHead();
+        if(current.equals(element)) {
+            this.setHead(toBeSwapped);
+            element.setNext(toBeSwapped.getNext());
+            toBeSwapped.setNext(element);
+            return;
+        }
+        while(current.hasNext()){
+            if(current.getNext().equals(element)){
+                toBeSwapped.setNext(element.getNext());
+                element.setNext(storage);
+                current.setNext(toBeSwapped);
+                return;
+            }
+           current = current.getNext();
+        }
     }
 }
