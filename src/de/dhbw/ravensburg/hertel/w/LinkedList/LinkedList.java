@@ -1,27 +1,13 @@
 package de.dhbw.ravensburg.hertel.w.LinkedList;
 
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
-import de.dhbw.ravensburg.hertel.w.Sorter.BubbleSorter;
 
 import java.lang.reflect.Array;
 
 public class LinkedList<T> extends AbstractList<T> {
 
-    //Variables
     private LinkedListElement head;
 
-    //Constructors
-
-    //Setter/Getter
-    private LinkedListElement getHead() {
-        return head;
-    }
-
-    private void setHead(LinkedListElement head) {
-        this.head = head;
-    }
-
-    //Overrides AbstractList
 
     @Override
     public void removeAll() {
@@ -55,12 +41,7 @@ public class LinkedList<T> extends AbstractList<T> {
     @Override
     public void removeParticularObj(T value) {
         if(this.contains(value)){
-            LinkedListElement e = this.getHead();
-            while(e.hasNext()){
-                if(e.getNext().getValue().equals(value)){
-                    e.setNext(new LinkedListElement(this.getElementFromCertainPosition(this.getPositionOfObj(e.getValue())+2)));
-                }
-            }
+            removeElement(findElementbyValue(value).getIndex());
         }else
             throw new IllegalArgumentException("The element: "+value.toString()+" is not contained within "+this.toString());
     }
@@ -86,7 +67,7 @@ public class LinkedList<T> extends AbstractList<T> {
         add(new LinkedListElement(value));
     }
 
-    public void add(LinkedListElement value) {
+    private void add(LinkedListElement value) {
         LinkedListElement e = this.getHead();
         if(e==null)
             this.setHead(value);
@@ -96,7 +77,10 @@ public class LinkedList<T> extends AbstractList<T> {
             }
             e.setNext(value);
         }
+        updateIndices();
+
     }
+
 
     @Override
     public void addAll(AbstractList list) {
@@ -122,7 +106,14 @@ public class LinkedList<T> extends AbstractList<T> {
         }
         return ts;
     }
-    //Overrides Object
+
+    public LinkedListElement getHead() {
+        return head;
+    }
+
+    private void setHead(LinkedListElement head) {
+        this.head = head;
+    }
 
     @Override
     public String toString() {
@@ -141,15 +132,9 @@ public class LinkedList<T> extends AbstractList<T> {
         return bs.toString();
     }
 
-    //Overrides Sortable
-    @Override
-    public void bubbleSort() {
-        //TODO: BubbleSorter.sort(this);
-    }
-
     @Override
     public void quickSort() {
-        //TODO: QuickSorter.sort(this);
+        //TODO:impl
     }
 
     @Override
@@ -157,29 +142,119 @@ public class LinkedList<T> extends AbstractList<T> {
         //TODO://impl
     }
 
-    //Overrides Comparable
     @Override
     public int compareTo(Object o) {
         return 0;
         //TODO:impl
     }
 
-    //Class-specific methods
-    public void addElementAtCertainPosition(T value, int position){
-        //TODO: impl
+    public void addElementAtCertainPosition(T value,int index){
+        LinkedListElement newElement = new LinkedListElement(value);
+        LinkedListElement oldElement = getElementByIndex(index);
+        LinkedListElement previous = findPreviousElement(oldElement);
+        if(oldElement == null){
+            oldElement = getElementByIndex(size());
+            oldElement.setNext(newElement);
+            updateIndices();
+            return;
+        }
+        previous.setNext(newElement);
+        newElement.setNext(oldElement);
+        updateIndices();
     }
 
-    public void removeElementFromCertainPosition(int position){
-        //TODO: impl
+    public void removeElement(int index){
+        LinkedListElement element = getElementByIndex(index);
+        LinkedListElement previous = findPreviousElement(element);
+        if(element.getNext() !=null)
+        previous.setNext(element.getNext());
+        else
+            previous.setNext(null);
+        updateIndices();
     }
 
-    public T getElementFromCertainPosition(int position){
-        //TODO: impl
+    private LinkedListElement getElementByIndex(int index){
+        updateIndices();
+        LinkedListElement current = getHead();
+        while(current != null){
+            if(current.getIndex() == index){
+                return  current;
+            }
+            current = current.getNext();
+        }
+      return null;
+    }
+    public Object getValueByIndex(int index){
+       LinkedListElement element = getElementByIndex(index);
+        if(element != null){
+            return element.getValue();
+        }
         return null;
     }
 
-    public int getPositionOfObj(Object value){
-        //TODO: impl
-        return 0;
+    public int getPositionOfObj(T value){
+        return findElementbyValue(value).getIndex();
+
+    }
+
+    //should now work fine
+    public void swapElements(LinkedListElement x, LinkedListElement y) {
+        Object xVal = x.getValue();
+        Object yVal = y.getValue();
+       if (xVal == yVal) {
+           return;
+        }
+        LinkedListElement prevX = findPreviousElement(x);
+        LinkedListElement currX = x;
+        LinkedListElement prevY = findPreviousElement(y);
+        LinkedListElement currY = y;
+        if(currX == null || currY == null){
+            return;
+        }
+        if (prevX != null) {
+            prevX.setNext(currY);
+        }
+        else {
+            setHead(currY);
+        }
+        if(prevY != null){
+            prevY.setNext(currX);
+        }
+        else{
+            setHead(currX);
+        }
+        LinkedListElement temp = currX.getNext();
+        currX.setNext(currY.getNext());
+        currY.setNext(temp);
+    }
+    LinkedListElement findElementbyValue(Object value) {
+        LinkedListElement prevX = null;
+        LinkedListElement currX = this.getHead();
+        while (currX != null && currX.getValue() != value) {
+            prevX = currX;
+            currX = currX.getNext();
+        }
+        return currX;
+    }
+    private LinkedListElement findPreviousElement(LinkedListElement element){
+        if(element == null)
+            return null;
+        LinkedListElement prevX = null;
+        LinkedListElement currX = this.getHead();
+        while (currX != null && currX.getValue() != element.getValue()) {
+            prevX = currX;
+            currX = currX.getNext();
+        }
+        return prevX;
+    }
+
+    public void updateIndices(){
+        LinkedListElement element = getHead();
+        int i = 0;
+        while(element !=null){
+           element.setIndex(i);
+           element = element.getNext();
+           i++;
+        }
     }
 }
