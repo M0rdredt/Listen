@@ -1,6 +1,8 @@
 package de.dhbw.ravensburg.hertel.w.LinkedList;
 
-public class LinkedListElement<T> {
+import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
+
+public class LinkedListElement<T> extends AbstractElement {
     //TODO: Evtl. AbstractElement?
     private T value;
     private LinkedListElement next;
