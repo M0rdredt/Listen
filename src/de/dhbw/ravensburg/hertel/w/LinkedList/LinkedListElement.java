@@ -19,7 +19,10 @@ public class LinkedListElement<T> {
     }
 
     public LinkedListElement getNext() {
-        return next;
+        if(next!=null)
+            return next;
+        else
+            return null;
     }
 
     void setNext(LinkedListElement next) {
@@ -34,7 +37,7 @@ public class LinkedListElement<T> {
         this.index=index;
     }
 
-    public int getIndex() {
+    int getIndex() {
         return index;
     }
 }

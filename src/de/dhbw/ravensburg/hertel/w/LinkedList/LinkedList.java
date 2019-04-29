@@ -41,7 +41,7 @@ public class LinkedList<T> extends AbstractList<T> {
     @Override
     public void removeParticularObj(T value) {
         if(this.contains(value)){
-            //TODO: code for removal
+            removeElement(findElementbyValue(value).getIndex());
         }else
             throw new IllegalArgumentException("The element: "+value.toString()+" is not contained within "+this.toString());
     }
@@ -67,7 +67,7 @@ public class LinkedList<T> extends AbstractList<T> {
         add(new LinkedListElement(value));
     }
 
-    public void add(LinkedListElement value) {
+    private void add(LinkedListElement value) {
         LinkedListElement e = this.getHead();
         if(e==null)
             this.setHead(value);
@@ -77,6 +77,8 @@ public class LinkedList<T> extends AbstractList<T> {
             }
             e.setNext(value);
         }
+        updateIndices();
+
     }
 
 
@@ -131,11 +133,6 @@ public class LinkedList<T> extends AbstractList<T> {
     }
 
     @Override
-    public void bubbleSort() {
-        //TODO: impl
-    }
-
-    @Override
     public void quickSort() {
         //TODO:impl
     }
@@ -151,23 +148,42 @@ public class LinkedList<T> extends AbstractList<T> {
         //TODO:impl
     }
 
-    public void addElementAtCertainPosition(T value){
-        //TODO: impl
+    public void addElementAtCertainPosition(T value,int index){
+        LinkedListElement newElement = new LinkedListElement(value);
+        LinkedListElement oldElement = getElementByIndex(index);
+        LinkedListElement previous = findPreviousElement(oldElement);
+        previous.setNext(newElement);
+        newElement.setNext(oldElement);
+        updateIndices();
     }
 
-    public void removeElementFromCertainPosition(){
-        //TODO: impl
+    public void removeElement(int index){
+        LinkedListElement element = getElementByIndex(index);
+        LinkedListElement previous = findPreviousElement(element);
+        if(element.getNext() !=null)
+        previous.setNext(element.getNext());
+        else
+            previous.setNext(null);
+        updateIndices();
     }
 
-    public T getElementFromCertainPosition(int index){
+    private LinkedListElement getElementByIndex(int index){
+        updateIndices();
         LinkedListElement current = getHead();
-        while(current.hasNext()){
+        while(current != null){
             if(current.getIndex() == index){
-                return (T) current;
+                return  current;
             }
             current = current.getNext();
         }
       return null;
+    }
+    public Object getValueByIndex(int index){
+       LinkedListElement element = getElementByIndex(index);
+        if(element != null){
+            return element.getValue();
+        }
+        return null;
     }
 
     public int getPositionOfObj(T value){
@@ -202,12 +218,8 @@ public class LinkedList<T> extends AbstractList<T> {
             setHead(currX);
         }
         LinkedListElement temp = currX.getNext();
-        int tempindex = currX.getIndex();
         currX.setNext(currY.getNext());
-        currX.setIndex(currY.getIndex());
         currY.setNext(temp);
-        currY.setIndex(tempindex);
-
     }
     LinkedListElement findElementbyValue(Object value) {
         LinkedListElement prevX = null;
@@ -226,5 +238,15 @@ public class LinkedList<T> extends AbstractList<T> {
             currX = currX.getNext();
         }
         return prevX;
+    }
+
+    public void updateIndices(){
+        LinkedListElement element = getHead();
+        int i = 0;
+        while(element !=null){
+           element.setIndex(i);
+           element = element.getNext();
+           i++;
+        }
     }
 }

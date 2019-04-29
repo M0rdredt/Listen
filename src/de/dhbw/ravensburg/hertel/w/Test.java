@@ -16,10 +16,13 @@ public class Test {
         list.add(6);
         BubbleSorter sorter = new BubbleSorter();
 
+        System.out.println(list.getValueByIndex(2));
         System.out.println(list);
         sorter.bubbleSort(list);
-        System.out.println(list.getElementFromCertainPosition(2));
+        list.removeElement(6);
         System.out.println(list);
-
+        System.out.println(list.getValueByIndex(2));
+        list.addElementAtCertainPosition(9,3);
+        System.out.println(list);
     }
 }
