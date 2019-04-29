@@ -22,7 +22,8 @@ public class Test {
         list.removeElement(6);
         System.out.println(list);
         System.out.println(list.getValueByIndex(2));
-        list.addElementAtCertainPosition(9,3);
+        list.addElementAtCertainPosition(9,6);
         System.out.println(list);
+
     }
 }

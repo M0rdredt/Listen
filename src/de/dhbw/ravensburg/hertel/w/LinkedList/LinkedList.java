@@ -152,6 +152,12 @@ public class LinkedList<T> extends AbstractList<T> {
         LinkedListElement newElement = new LinkedListElement(value);
         LinkedListElement oldElement = getElementByIndex(index);
         LinkedListElement previous = findPreviousElement(oldElement);
+        if(oldElement == null){
+            oldElement = getElementByIndex(size());
+            oldElement.setNext(newElement);
+            updateIndices();
+            return;
+        }
         previous.setNext(newElement);
         newElement.setNext(oldElement);
         updateIndices();
@@ -231,6 +237,8 @@ public class LinkedList<T> extends AbstractList<T> {
         return currX;
     }
     private LinkedListElement findPreviousElement(LinkedListElement element){
+        if(element == null)
+            return null;
         LinkedListElement prevX = null;
         LinkedListElement currX = this.getHead();
         while (currX != null && currX.getValue() != element.getValue()) {

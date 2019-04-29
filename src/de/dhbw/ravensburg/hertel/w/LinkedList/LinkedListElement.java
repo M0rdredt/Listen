@@ -10,7 +10,7 @@ public class LinkedListElement<T> {
         this.value=value;
     }
     //Todo: write equals method
-    public T getValue() {
+        public T getValue() {
         return value;
     }
 

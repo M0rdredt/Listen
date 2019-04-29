@@ -3,7 +3,7 @@ package de.dhbw.ravensburg.hertel.w.Sorter;
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedList;
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedListElement;
 
-public class BubbleSorter {
+public class BubbleSorter<T> {
 
     //ToDo: make it work if there are 2 elements of same numerical value
     public void bubbleSort(LinkedList list){
@@ -21,6 +21,7 @@ public class BubbleSorter {
                 }
                 element = element.getNext();
             }
+
             i++;
 
         }
