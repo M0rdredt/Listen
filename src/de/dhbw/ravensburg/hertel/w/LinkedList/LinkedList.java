@@ -171,28 +171,60 @@ public class LinkedList<T> extends AbstractList<T> {
     }
 
     public int getPositionOfObj(T value){
-        //TODO: impl
-        return 0;
+        return findElementbyValue(value).getIndex();
+
     }
-    //Would be better to do it with indexes - implemented indexVariable to Elements
-    //not working -- ToDo: do better
-    public void swapElements(LinkedListElement element, LinkedListElement toBeSwapped){
-        LinkedListElement storage = toBeSwapped.getNext();
-        LinkedListElement current = this.getHead();
-        if(current.equals(element)) {
-            this.setHead(toBeSwapped);
-            element.setNext(toBeSwapped.getNext());
-            toBeSwapped.setNext(element);
+
+    //should now work fine
+    public void swapElements(LinkedListElement x, LinkedListElement y) {
+        Object xVal = x.getValue();
+        Object yVal = y.getValue();
+       if (xVal == yVal) {
+           return;
+        }
+        LinkedListElement prevX = findPreviousElement(x);
+        LinkedListElement currX = x;
+        LinkedListElement prevY = findPreviousElement(y);
+        LinkedListElement currY = y;
+        if(currX == null || currY == null){
             return;
         }
-        while(current.hasNext()){
-            if(current.getNext().equals(element)){
-                toBeSwapped.setNext(element.getNext());
-                element.setNext(storage);
-                current.setNext(toBeSwapped);
-                return;
-            }
-           current = current.getNext();
+        if (prevX != null) {
+            prevX.setNext(currY);
         }
+        else {
+            setHead(currY);
+        }
+        if(prevY != null){
+            prevY.setNext(currX);
+        }
+        else{
+            setHead(currX);
+        }
+        LinkedListElement temp = currX.getNext();
+        int tempindex = currX.getIndex();
+        currX.setNext(currY.getNext());
+        currX.setIndex(currY.getIndex());
+        currY.setNext(temp);
+        currY.setIndex(tempindex);
+
+    }
+    LinkedListElement findElementbyValue(Object value) {
+        LinkedListElement prevX = null;
+        LinkedListElement currX = this.getHead();
+        while (currX != null && currX.getValue() != value) {
+            prevX = currX;
+            currX = currX.getNext();
+        }
+        return currX;
+    }
+    private LinkedListElement findPreviousElement(LinkedListElement element){
+        LinkedListElement prevX = null;
+        LinkedListElement currX = this.getHead();
+        while (currX != null && currX.getValue() != element.getValue()) {
+            prevX = currX;
+            currX = currX.getNext();
+        }
+        return prevX;
     }
 }

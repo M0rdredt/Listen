@@ -24,15 +24,14 @@ public class LinkedListElement<T> {
 
     void setNext(LinkedListElement next) {
         this.next = next;
-        this.next.setIndex(index+1);
+
     }
     public boolean hasNext(){
         return next!=null;
     }
 
-    private void setIndex(int index){
+     void setIndex(int index){
         this.index=index;
-        System.out.println(index);
     }
 
     public int getIndex() {

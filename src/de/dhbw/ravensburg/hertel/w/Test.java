@@ -11,8 +11,15 @@ public class Test {
         list.add(7);
         list.add(1);
         list.add(8);
+        list.add(3);
+        list.add(13);
+        list.add(6);
+        BubbleSorter sorter = new BubbleSorter();
 
         System.out.println(list);
+        sorter.bubbleSort(list);
         System.out.println(list.getElementFromCertainPosition(2));
+        System.out.println(list);
+
     }
 }
