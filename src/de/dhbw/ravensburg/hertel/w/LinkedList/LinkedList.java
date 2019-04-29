@@ -1,13 +1,27 @@
 package de.dhbw.ravensburg.hertel.w.LinkedList;
 
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
+import de.dhbw.ravensburg.hertel.w.Sorter.BubbleSorter;
 
 import java.lang.reflect.Array;
 
 public class LinkedList<T> extends AbstractList<T> {
 
+    //Variables
     private LinkedListElement head;
 
+    //Constructors
+
+    //Setter/Getter
+    private LinkedListElement getHead() {
+        return head;
+    }
+
+    private void setHead(LinkedListElement head) {
+        this.head = head;
+    }
+
+    //Overrides AbstractList
 
     @Override
     public void removeAll() {
@@ -41,7 +55,12 @@ public class LinkedList<T> extends AbstractList<T> {
     @Override
     public void removeParticularObj(T value) {
         if(this.contains(value)){
-            //TODO: code for removal
+            LinkedListElement e = this.getHead();
+            while(e.hasNext()){
+                if(e.getNext().getValue().equals(value)){
+                    e.setNext(new LinkedListElement(this.getElementFromCertainPosition(this.getPositionOfObj(e.getValue())+2)));
+                }
+            }
         }else
             throw new IllegalArgumentException("The element: "+value.toString()+" is not contained within "+this.toString());
     }
@@ -79,7 +98,6 @@ public class LinkedList<T> extends AbstractList<T> {
         }
     }
 
-
     @Override
     public void addAll(AbstractList list) {
         if(list instanceof LinkedList) {
@@ -90,8 +108,6 @@ public class LinkedList<T> extends AbstractList<T> {
         }
 
     }
-
-
 
     @Override
     public T[] returnAsArray() {
@@ -106,16 +122,7 @@ public class LinkedList<T> extends AbstractList<T> {
         }
         return ts;
     }
-
-
-
-    private LinkedListElement getHead() {
-        return head;
-    }
-
-    private void setHead(LinkedListElement head) {
-        this.head = head;
-    }
+    //Overrides Object
 
     @Override
     public String toString() {
@@ -134,14 +141,15 @@ public class LinkedList<T> extends AbstractList<T> {
         return bs.toString();
     }
 
+    //Overrides Sortable
     @Override
     public void bubbleSort() {
-        //TODO: impl
+        //TODO: BubbleSorter.sort(this);
     }
 
     @Override
     public void quickSort() {
-        //TODO:impl
+        //TODO: QuickSorter.sort(this);
     }
 
     @Override
@@ -149,26 +157,28 @@ public class LinkedList<T> extends AbstractList<T> {
         //TODO://impl
     }
 
+    //Overrides Comparable
     @Override
     public int compareTo(Object o) {
         return 0;
         //TODO:impl
     }
 
-    public void addElementAtCertainPosition(T value){
+    //Class-specific methods
+    public void addElementAtCertainPosition(T value, int position){
         //TODO: impl
     }
 
-    public void removeElementFromCertainPosition(){
+    public void removeElementFromCertainPosition(int position){
         //TODO: impl
     }
 
-    public T getElementFromCertainPosition(){
+    public T getElementFromCertainPosition(int position){
         //TODO: impl
         return null;
     }
 
-    public int getPositionOfObj(T value){
+    public int getPositionOfObj(Object value){
         //TODO: impl
         return 0;
     }
