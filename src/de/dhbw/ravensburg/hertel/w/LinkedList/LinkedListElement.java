@@ -27,8 +27,8 @@ public class LinkedListElement<T> {
 
     void setNext(LinkedListElement next) {
         this.next = next;
-
     }
+
     public boolean hasNext(){
         return next!=null;
     }
