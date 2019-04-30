@@ -131,6 +131,7 @@ public class DoubleLinkedList<T> extends AbstractList {
         DoubleLinkedListElement currY = (DoubleLinkedListElement) element2;
         DoubleLinkedListElement prevX = findPreviousElement(currX);
         DoubleLinkedListElement prevY = findPreviousElement(currY);
+        boolean successive = areSuccessiveElements(currX, currY);
         if (currX == null || currY == null) {
             return;
         }
@@ -144,29 +145,29 @@ public class DoubleLinkedList<T> extends AbstractList {
         } else {
             setHead(currX);
         }*/
-        DoubleLinkedListElement temp1 = currX.getNext();
-        DoubleLinkedListElement temp2 = currX.getPrevious();
-
-        if (!currY.getPrevious().equals(currX)) {
+        DoubleLinkedListElement temp1 = currX;
+        DoubleLinkedListElement temp2 =currX.getPrevious();
+        if (!successive) {
             currX.setPrevious(currY.getPrevious());
-        }
-        else {
-            currX.setPrevious(currX);
-        }
-
-        currY.setPrevious(temp2);
-
-        if(currY.hasNext()) {
             currX.setNext(currY.getNext());
+            currY.getPrevious().setNext(currX);
+            if(currY.hasNext()) {
+                currY.getNext().setPrevious(currX);
+            }
+            currY.setPrevious(temp1.getPrevious());
+            currY.setNext(temp1.getNext());
+            if(temp1.getPrevious()!=null){
+                temp1.getPrevious().setNext(currY);
+            }
+            temp1.getNext().setPrevious(currY);
         }
         else{
-            currX.setNext(null);
-        }
-        if(!temp1.equals(currY)){
-            currY.setNext(temp1);
-        }
-        else{
-            currY.setNext(currY);
+            currX.setNext(currY.getNext());
+            currX.setPrevious(currY);
+            currY.getNext().setPrevious(currX);
+            currY.setNext(currX);
+            currY.setPrevious(temp2);
+            temp1.getPrevious().getPrevious().setNext(currY);
         }
     }
 
@@ -177,6 +178,14 @@ public class DoubleLinkedList<T> extends AbstractList {
         else{
             return null;
         }
+    }
+
+    private boolean areSuccessiveElements(DoubleLinkedListElement a, DoubleLinkedListElement b){
+        if(a.getNext().equals(b)||a.getPrevious().equals(b)){
+            return true;
+        }
+        else
+            return false;
     }
 
 

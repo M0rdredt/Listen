@@ -23,9 +23,12 @@ public class Test {
         System.out.println("----------------------------------------");
 
         DoubleLinkedList dlist = new DoubleLinkedList();
+        dlist.add(1);
         dlist.add(2);
-        dlist.add(7);
+        dlist.add(3);
         dlist.add(5);
+        dlist.add(4);
+        dlist.add(9);
         sorter.bubbleSort(dlist);
         System.out.println(dlist);
 
