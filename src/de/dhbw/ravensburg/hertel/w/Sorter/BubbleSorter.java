@@ -1,13 +1,15 @@
 package de.dhbw.ravensburg.hertel.w.Sorter;
 
+import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
+import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedList;
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedListElement;
 
 public class BubbleSorter<T> {
 
     //ToDo: make it work if there are 2 elements of same numerical value
-    public void bubbleSort(LinkedList list){
-        LinkedListElement element;
+    public void bubbleSort(AbstractList list){
+        AbstractElement element;
         int i =0;
         while(i< list.size()) {
             element = list.getHead();

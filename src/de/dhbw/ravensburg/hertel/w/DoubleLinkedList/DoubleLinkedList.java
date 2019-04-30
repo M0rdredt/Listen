@@ -1,5 +1,6 @@
 package de.dhbw.ravensburg.hertel.w.DoubleLinkedList;
 
+import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
 
 //TODO: alles
@@ -32,6 +33,7 @@ public class DoubleLinkedList<T> extends AbstractList {
         else {
             DoubleLinkedListElement currentTail = this.getTail();
             currentTail.setNext(value);
+            value.setPrevious(currentTail);
             this.setTail(value);
         }
         updateIndices();
@@ -117,6 +119,64 @@ public class DoubleLinkedList<T> extends AbstractList {
         }
         else
             return 0; //return number for size()
+    }
+
+    public void swapElements(AbstractElement element1, AbstractElement element2) {
+        Object xVal = element1.getValue();
+        Object yVal = element2.getValue();
+        if (xVal == yVal) {
+            return;
+        }
+        DoubleLinkedListElement currX = (DoubleLinkedListElement) element1;
+        DoubleLinkedListElement currY = (DoubleLinkedListElement) element2;
+        DoubleLinkedListElement prevX = findPreviousElement(currX);
+        DoubleLinkedListElement prevY = findPreviousElement(currY);
+        if (currX == null || currY == null) {
+            return;
+        }
+    /*    if (prevX != null) {
+            prevX.setNext(currY);
+        } else {
+            setHead(currY);
+        }
+        if (prevY != null) {
+            prevY.setNext(currX);
+        } else {
+            setHead(currX);
+        }*/
+        DoubleLinkedListElement temp1 = currX.getNext();
+        DoubleLinkedListElement temp2 = currX.getPrevious();
+
+        if (!currY.getPrevious().equals(currX)) {
+            currX.setPrevious(currY.getPrevious());
+        }
+        else {
+            currX.setPrevious(currX);
+        }
+
+        currY.setPrevious(temp2);
+
+        if(currY.hasNext()) {
+            currX.setNext(currY.getNext());
+        }
+        else{
+            currX.setNext(null);
+        }
+        if(!temp1.equals(currY)){
+            currY.setNext(temp1);
+        }
+        else{
+            currY.setNext(currY);
+        }
+    }
+
+    private DoubleLinkedListElement findPreviousElement(DoubleLinkedListElement element){
+        if(element.getPrevious()!=null){
+            return element.getPrevious();
+        }
+        else{
+            return null;
+        }
     }
 
 

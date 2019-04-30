@@ -1,5 +1,6 @@
 package de.dhbw.ravensburg.hertel.w.LinkedList;
 
+import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
 
 import java.lang.reflect.Array;
@@ -166,7 +167,10 @@ public class LinkedList<T> extends AbstractList<T> {
     public void removeElement(int index){
         LinkedListElement element = getElementByIndex(index);
         LinkedListElement previous = findPreviousElement(element);
-        if(element.getNext() !=null)
+        if(element == null || previous == null){
+            return;
+        }
+        if(element.hasNext())
         previous.setNext(element.getNext());
         else
             previous.setNext(null);
@@ -198,16 +202,16 @@ public class LinkedList<T> extends AbstractList<T> {
     }
 
     //should now work fine
-    public void swapElements(LinkedListElement x, LinkedListElement y) {
-        Object xVal = x.getValue();
-        Object yVal = y.getValue();
+    public void swapElements(AbstractElement element1, AbstractElement element2) {
+        Object xVal = element1.getValue();
+        Object yVal = element2.getValue();
        if (xVal == yVal) {
            return;
         }
-        LinkedListElement prevX = findPreviousElement(x);
-        LinkedListElement currX = x;
-        LinkedListElement prevY = findPreviousElement(y);
-        LinkedListElement currY = y;
+        LinkedListElement currX = (LinkedListElement) element1;
+        LinkedListElement currY = (LinkedListElement) element2;
+        LinkedListElement prevX = findPreviousElement(currX);
+        LinkedListElement prevY = findPreviousElement(currY);
         if(currX == null || currY == null){
             return;
         }

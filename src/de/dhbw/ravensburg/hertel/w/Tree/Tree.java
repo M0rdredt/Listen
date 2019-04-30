@@ -1,9 +1,20 @@
 package de.dhbw.ravensburg.hertel.w.Tree;
 
+import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
 
 //TODO: alles
 public class Tree extends AbstractList {
+    @Override
+    public AbstractElement getHead() {
+        return null;
+    }
+
+    @Override
+    public void swapElements(AbstractElement element1, AbstractElement element2) {
+
+    }
+
     @Override
     public boolean isEmpty() {
         return false;

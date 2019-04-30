@@ -1,5 +1,6 @@
 package de.dhbw.ravensburg.hertel.w.Queue;
 
+import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
 
 //TODO: alles
@@ -52,6 +53,16 @@ public class Queue extends AbstractList {
     @Override
     public String toString() {
         return null;
+    }
+
+    @Override
+    public AbstractElement getHead() {
+        return null;
+    }
+
+    @Override
+    public void swapElements(AbstractElement element1, AbstractElement element2) {
+
     }
 
     @Override

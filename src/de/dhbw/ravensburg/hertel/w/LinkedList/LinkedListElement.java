@@ -1,6 +1,8 @@
 package de.dhbw.ravensburg.hertel.w.LinkedList;
 
-public class LinkedListElement<T> {
+import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
+
+public class LinkedListElement<T> extends AbstractElement {
     //TODO: Evtl. AbstractElement?
     private T value;
     private LinkedListElement next;
@@ -33,7 +35,7 @@ public class LinkedListElement<T> {
         return next!=null;
     }
 
-     void setIndex(int index){
+    void setIndex(int index){
         this.index=index;
     }
 

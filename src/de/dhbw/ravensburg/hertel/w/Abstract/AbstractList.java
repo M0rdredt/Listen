@@ -2,6 +2,8 @@ package de.dhbw.ravensburg.hertel.w.Abstract;
 
 public abstract class AbstractList<T> implements Comparable, Sortable {
 
+    AbstractElement head;
+
     //TODO: evtl Default-Impl?
     public abstract boolean isEmpty();
     public abstract int size();
@@ -13,5 +15,7 @@ public abstract class AbstractList<T> implements Comparable, Sortable {
     public abstract void removeParticularObj(T value);
     public abstract T[] returnAsArray();
     public abstract String toString();
+    public abstract AbstractElement getHead();
+    public abstract void swapElements(AbstractElement element1, AbstractElement element2);
 
 }

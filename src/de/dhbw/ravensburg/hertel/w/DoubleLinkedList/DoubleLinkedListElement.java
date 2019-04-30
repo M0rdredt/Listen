@@ -14,6 +14,11 @@ public class DoubleLinkedListElement<T> extends AbstractElement {
         this.value = value;
     }
 
+    public boolean hasNext(){
+        return this.getNext()!=null;
+    }
+
+
     //Getter & Setter
     public T getValue() {
         return value;
@@ -27,7 +32,7 @@ public class DoubleLinkedListElement<T> extends AbstractElement {
         this.next = next;
     }
 
-    DoubleLinkedListElement getNext(){
+    public DoubleLinkedListElement getNext(){
         return next;
     }
 
