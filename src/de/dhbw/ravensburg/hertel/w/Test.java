@@ -1,5 +1,7 @@
 package de.dhbw.ravensburg.hertel.w;
 
+import de.dhbw.ravensburg.hertel.w.DoubleLinkedList.DoubleLinkedList;
+import de.dhbw.ravensburg.hertel.w.DoubleLinkedList.DoubleLinkedListElement;
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedList;
 import de.dhbw.ravensburg.hertel.w.Sorter.BubbleSorter;
 
@@ -22,8 +24,12 @@ public class Test {
         list.removeElement(6);
         System.out.println(list);
         System.out.println(list.getValueByIndex(2));
-        list.addElementAtCertainPosition(9,6);
-        System.out.println(list);
+        System.out.println("----------------------------------------");
+
+        DoubleLinkedList dlist = new DoubleLinkedList();
+        dlist.add(2);
+        dlist.add(6);
+        System.out.println(dlist);
 
     }
 }
