@@ -1,14 +1,16 @@
 package de.dhbw.ravensburg.hertel.w;
 
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedList;
+import de.dhbw.ravensburg.hertel.w.Queue.Queue;
 
 public class Test {
 
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
-        list.add(4);
-        list.add(3);
-        list.add(2);
-        System.out.println(list);
+       Queue myque = new Queue();
+       myque.add(6);
+       myque.add(7);
+       myque.add(3);
+       myque.add('z');
+
     }
 }

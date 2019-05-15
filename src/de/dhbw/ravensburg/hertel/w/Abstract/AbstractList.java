@@ -10,7 +10,6 @@ public abstract class AbstractList<T> implements Comparable, Sortable {
     public abstract void removeAll();
     public abstract boolean contains(T value);
     public abstract boolean containsAll(AbstractList list);
-    public abstract void removeParticularObj(T value);
     public abstract T[] returnAsArray();
     public abstract String toString();
 
