@@ -39,7 +39,6 @@ public class LinkedList<T> extends AbstractList<T> {
         return true;
     }
 
-    @Override
     public void removeParticularObj(T value) {
         if(this.contains(value)){
             removeElement(findElementbyValue(value).getIndex());

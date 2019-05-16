@@ -1,13 +1,15 @@
 package de.dhbw.ravensburg.hertel.w.Queue;
 
-import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
 
 //TODO: alles
-public class Queue extends AbstractList {
+public class Queue<T> extends AbstractList {
+    QueueElement firstElement;
+    QueueElement lastElement;
+
     @Override
     public boolean isEmpty() {
-        return false;
+        return firstElement==null;
     }
 
     @Override
@@ -17,6 +19,21 @@ public class Queue extends AbstractList {
 
     @Override
     public void add(Object value) {
+        add(new QueueElement(value));
+    }
+    public void add(QueueElement element){
+        if(this.isEmpty()){
+            firstElement = element;
+            element.setIndex(0);
+            lastElement = element;
+        }
+        else {
+            lastElement.setNextElement(element);
+            element.setIndex(lastElement.getIndex() + 1);
+            lastElement = element;
+
+        }
+
 
     }
 
@@ -32,17 +49,13 @@ public class Queue extends AbstractList {
 
     @Override
     public boolean contains(Object value) {
+        QueueElement element = new QueueElement(value);
         return false;
     }
 
     @Override
     public boolean containsAll(AbstractList list) {
         return false;
-    }
-
-    @Override
-    public void removeParticularObj(Object value) {
-
     }
 
     @Override
@@ -56,12 +69,7 @@ public class Queue extends AbstractList {
     }
 
     @Override
-    public AbstractElement getHead() {
-        return null;
-    }
-
-    @Override
-    public void swapElements(AbstractElement element1, AbstractElement element2) {
+    public void bubbleSort() {
 
     }
 
