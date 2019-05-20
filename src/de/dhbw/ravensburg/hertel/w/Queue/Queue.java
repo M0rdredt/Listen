@@ -97,6 +97,11 @@ public class Queue<T> extends AbstractList {
     }
 
     @Override
+    public void removeParticularObj(Object value) {
+        
+    }
+
+    @Override
     public void quickSort() {
 
     }

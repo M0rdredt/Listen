@@ -13,7 +13,9 @@ public class Test {
        myque.add(7);
        myque.add(3);
        myque.add('z');
-        System.out.println("hey");
+
+       System.out.println(myque.size());
+
 
     }
 }

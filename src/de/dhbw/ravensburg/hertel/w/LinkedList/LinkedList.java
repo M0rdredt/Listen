@@ -39,12 +39,7 @@ public class LinkedList<T> extends AbstractList<T> {
         return true;
     }
 
-    public void removeParticularObj(T value) {
-        if(this.contains(value)){
-            removeElement(findElementbyValue(value).getIndex());
-        }else
-            throw new IllegalArgumentException("The element: "+value.toString()+" is not contained within "+this.toString());
-    }
+
 
     @Override
     public boolean isEmpty() {
@@ -230,6 +225,12 @@ public class LinkedList<T> extends AbstractList<T> {
         currX.setNext(currY.getNext());
         currY.setNext(temp);
     }
+
+    @Override
+    public void removeParticularObj(Object value) {
+
+    }
+
     LinkedListElement findElementbyValue(Object value) {
         LinkedListElement prevX = null;
         LinkedListElement currX = this.getHead();

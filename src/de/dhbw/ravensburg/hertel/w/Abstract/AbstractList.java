@@ -5,6 +5,7 @@ public abstract class AbstractList<T> implements Comparable, Sortable {
     AbstractElement head;
 
     //TODO: evtl Default-Impl?
+    //TODO: nur eine Art von Werten zulassen
     public abstract boolean isEmpty();
     public abstract int size();
     public abstract void add(T value);
@@ -16,5 +17,8 @@ public abstract class AbstractList<T> implements Comparable, Sortable {
     public abstract String toString();
     public abstract AbstractElement getHead();
     public abstract void swapElements(AbstractElement element1, AbstractElement element2);
+
+
+    public abstract void removeParticularObj(Object value);
 
 }
