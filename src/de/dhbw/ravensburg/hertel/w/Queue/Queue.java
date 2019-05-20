@@ -1,5 +1,6 @@
 package de.dhbw.ravensburg.hertel.w.Queue;
 
+import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
 
 //TODO: alles
@@ -14,7 +15,18 @@ public class Queue<T> extends AbstractList {
 
     @Override
     public int size() {
-        return 0;
+
+        int counterIndexSize = 1;
+        QueueElement counterElementSize = firstElement;
+
+        if (isEmpty())
+            return 0;
+
+        while (counterElementSize.getNextElement() != null){
+          counterIndexSize++;
+          counterElementSize = counterElementSize.getNextElement();
+        }
+        return counterIndexSize;
     }
 
     @Override
@@ -44,11 +56,17 @@ public class Queue<T> extends AbstractList {
 
     @Override
     public void removeAll() {
+        if (!isEmpty())
+
+            do {
+                lastElement = null;
+            } while (lastElement != firstElement);
 
     }
 
     @Override
     public boolean contains(Object value) {
+        // TODO: oberstes auslesen, überprüfen ob es das richtige ist, wenn das richtige fertig, wenn nicht das richtige rauslöschen und unten einfügen und wieder beim obersten neu anfangen
         QueueElement element = new QueueElement(value);
         return false;
     }
@@ -68,8 +86,13 @@ public class Queue<T> extends AbstractList {
         return null;
     }
 
-    @Override
-    public void bubbleSort() {
+    @java.lang.Override
+    public AbstractElement getHead() {
+        return null;
+    }
+
+    @java.lang.Override
+    public void swapElements(AbstractElement element1, AbstractElement element2) {
 
     }
 
