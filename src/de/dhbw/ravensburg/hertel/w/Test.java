@@ -14,6 +14,14 @@ public class Test {
        myque.add(3);
        myque.add('z');
 
+       System.out.println(myque.contains(7));
+
+       System.out.println(myque.size());
+
+        System.out.println(myque);
+
+       myque.removeAll();
+
        System.out.println(myque.size());
 
 

@@ -11,6 +11,7 @@ public class QueueElement<T> {
     }
 
     public void setNextElement(QueueElement nextElement) {
+
         this.nextElement = nextElement;
     }
 
@@ -19,18 +20,25 @@ public class QueueElement<T> {
     }
 
     public int getIndex() {
+
         return index;
     }
 
     public void setIndex(int index) {
+
         this.index = index;
     }
 
     public T getValue() {
+
         return value;
     }
 
     public void setValue(T value) {
+
         this.value = value;
+    }
+    public boolean hasNext(){
+        return nextElement!=null;
     }
 }
