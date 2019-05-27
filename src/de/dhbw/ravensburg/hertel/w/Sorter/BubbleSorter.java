@@ -11,19 +11,32 @@ public class BubbleSorter<T> {
     public void bubbleSort(AbstractList list){
         AbstractElement element;
         int i =0;
-        while(i< list.size()) {
-            element = list.getHead();
+
+        boolean sorted=false;
+            while (!sorted){
+                element = list.getHead();
+                boolean hasSwitched = false;
+
             while (element != null && element.hasNext()) {
                 if (element.getValue() instanceof Number && element.getNext().getValue() instanceof Number) {
                     Number first = (Number) element.getValue();
                     Number second = (Number) element.getNext().getValue();
                     if (first.doubleValue() > second.doubleValue()) {
                         list.swapElements(element, element.getNext());
+                        hasSwitched = true;
+                        continue;
+                    }
+                    if(!hasSwitched){
+                        element = element.getNext();
+                    }
+                    else{
+                        element = list.getHead();
                     }
                 }
-                element = element.getNext();
             }
-
+            if (!element.hasNext() && !hasSwitched){
+                sorted = true;
+            }
             i++;
 
         }

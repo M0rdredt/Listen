@@ -10,8 +10,23 @@ public class Test {
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
 
-        list.add(13);
+        list.add(5);
+        list.add(23);
+        list.add(12);
+        list.add(3);
+        list.add(8);
+        list.add(45);
+        list.add(2);
+        list.add(11);
+        list.add(10);
         list.add(6);
+        list.add(52);
+        list.add(16);
+        list.add(14);
+        list.add(7);
+        list.add(17);
+        list.add(1);
+        list.add(19);
         BubbleSorter sorter = new BubbleSorter();
 
         System.out.println(list.getValueByIndex(2));
@@ -23,13 +38,13 @@ public class Test {
         System.out.println("----------------------------------------");
 
         DoubleLinkedList dlist = new DoubleLinkedList();
-        dlist.add(1);
-        dlist.add(2);
+        dlist.add(6);
         dlist.add(3);
+        dlist.add(2);
         dlist.add(5);
         dlist.add(4);
         dlist.add(9);
-        sorter.bubbleSort(dlist);
+
         System.out.println(dlist);
 
     }
