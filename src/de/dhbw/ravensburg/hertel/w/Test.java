@@ -20,9 +20,7 @@ public class Test {
 
         System.out.println(myque);
 
-       myque.removeAll();
-
-       System.out.println(myque.size());
+        System.out.println(myque.peek().getValue());
 
 
     }

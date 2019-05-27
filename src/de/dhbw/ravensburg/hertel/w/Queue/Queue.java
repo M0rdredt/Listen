@@ -1,26 +1,21 @@
 package de.dhbw.ravensburg.hertel.w.Queue;
 
-import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
-import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedListElement;
-
-import java.lang.reflect.Array;
 
 //TODO: alles
-public class Queue<T> extends AbstractList {
-    QueueElement firstElement;
-    QueueElement lastElement;
+public class Queue<T> {
+    QueueElement head;
+    QueueElement tail;
 
-    @Override
+
     public boolean isEmpty() {
-        return firstElement == null;
+        return head == null;
     }
 
-    @Override
     public int size() {
 
         int counterIndexSize = 1;
-        QueueElement counterElementSize = firstElement;
+        QueueElement counterElementSize = head;
 
         if (isEmpty())
             return 0;
@@ -32,40 +27,47 @@ public class Queue<T> extends AbstractList {
         return counterIndexSize;
     }
 
-    @Override
+
     public void add(Object value) {
         add(new QueueElement(value));
     }
 
     public void add(QueueElement element) {
         if (this.isEmpty()) {
-            firstElement = element;
+            head = element;
             element.setIndex(0);
-            lastElement = element;
+            tail = element;
         } else {
-            lastElement.setNextElement(element);
-            element.setIndex(lastElement.getIndex() + 1);
-            lastElement = element;
+            tail.setNextElement(element);
+            element.setIndex(tail.getIndex() + 1);
+            tail = element;
         }
     }
 
-    @Override
-    public void addAll(AbstractList list) {
-
+    public QueueElement poll(){
+        QueueElement element = head;
+        if(element.hasNext()){
+            head=element.getNextElement();
+        }
+        else{
+            head = null;
+            tail = null;
+        }
+        return element;
     }
-
-    @Override
     public void removeAll() {
-
         if (!isEmpty())
-            lastElement = null;
-        firstElement = null;
+            tail = null;
+        head = null;
     }
 
-    @Override
+    public QueueElement peek(){
+        return head;
+    }
+
     public boolean contains(Object value) {
         QueueElement element = new QueueElement(value);
-        QueueElement compare = firstElement;
+        QueueElement compare = head;
         while (compare.getNextElement() != null) {
             if (element.getValue().equals(compare.getValue()))
                 return true;
@@ -74,23 +76,20 @@ public class Queue<T> extends AbstractList {
         return false;
     }
 
-    @Override
     public boolean containsAll(AbstractList list) {
         return false;
     }
 
-    @Override
     public Object[] returnAsArray() {
 
         return new Object[0];
     }
 
-    @Override
     public String toString() {
 
         StringBuilder bs = new StringBuilder("[");
-        if (firstElement != null) {
-            QueueElement element = firstElement;
+        if (head != null) {
+            QueueElement element = head;
             while (element.hasNext()) {
                 bs.append(element.getValue().toString()).append(", ");
                 element = element.getNextElement();
@@ -101,39 +100,5 @@ public class Queue<T> extends AbstractList {
         }
         bs.append("]");
         return bs.toString();
-    }
-
-
-    @java.lang.Override
-    public AbstractElement getHead() {
-        return null;
-    }
-
-    @java.lang.Override
-    public void swapElements(AbstractElement element1, AbstractElement element2) {
-
-        // TODO: löschen
-    }
-
-    @Override
-    public void removeParticularObj(Object value) {
-
-        // TODO: löschen
-
-    }
-
-    @Override
-    public void quickSort() {
-
-    }
-
-    @Override
-    public void otherSort() {
-
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        return 0;
     }
 }
