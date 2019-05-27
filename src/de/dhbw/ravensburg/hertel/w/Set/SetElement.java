@@ -3,19 +3,33 @@ package de.dhbw.ravensburg.hertel.w.Set;
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
 
 //TODO: alles
-public class SetElement extends AbstractElement {
-    @Override
+public class SetElement<T> {
+   private T value;
+   private SetElement next;
+
+    public SetElement(T value) {
+        this.value = value;
+    }
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public void setNext(SetElement next) {
+        this.next = next;
+    }
+
     public boolean hasNext() {
-        return false;
+        return next!=null;
     }
 
-    @Override
-    public Object getValue() {
-        return null;
+    public T getValue() {
+        return value;
     }
 
-    @Override
-    public AbstractElement getNext() {
-        return null;
+    public SetElement getNext() {
+        return next;
     }
+
+
 }
