@@ -1,82 +1,48 @@
 package de.dhbw.ravensburg.hertel.w.Stack;
 
-import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
-import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
+public class Stack<T>  {
+    StackElement top;
 
-//TODO: alles
-public class Stack extends AbstractList {
-    @Override
-    public AbstractElement getHead() {
-        return null;
+    public void push(Object value){
+
+        push(new StackElement(value));
+    }
+    public void push(StackElement element){
+        if(isEmpty()){
+            top = element;
+            return;
+        }
+        else{
+            element.setNext(top);
+            top = element;
+        }
     }
 
-    @Override
-    public void swapElements(AbstractElement element1, AbstractElement element2) {
-
+    public Object pop(){
+        StackElement element = top;
+        top = element.getNext();
+        return element.getValue();
     }
 
-    @Override
-    public boolean isEmpty() {
-        return false;
+    public boolean isEmpty(){
+        return top == null;
     }
 
-    @Override
-    public int size() {
-        return 0;
+    public StackElement peek(){
+        return top;
     }
 
-    @Override
-    public void add(Object value) {
+    public int search(StackElement element){
+        int pos = 1;
+        StackElement current = top;
+        while(current!=null){
+            if(current.equals(element)){
+                return pos;
+            }
+            pos+=1;
+            current = current.getNext();
 
-    }
-
-    @Override
-    public void addAll(AbstractList list) {
-
-    }
-
-    @Override
-    public void removeAll() {
-
-    }
-
-    @Override
-    public boolean contains(Object value) {
-        return false;
-    }
-
-    @Override
-    public boolean containsAll(AbstractList list) {
-        return false;
-    }
-
-    @Override
-    public void removeParticularObj(Object value) {
-
-    }
-
-    @Override
-    public Object[] returnAsArray() {
-        return new Object[0];
-    }
-
-    @Override
-    public String toString() {
-        return null;
-    }
-
-    @Override
-    public void quickSort() {
-
-    }
-
-    @Override
-    public void otherSort() {
-
-    }
-
-    @Override
-    public int compareTo(Object o) {
+        }
         return 0;
     }
 }

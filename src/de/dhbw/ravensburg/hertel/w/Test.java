@@ -1,11 +1,8 @@
 package de.dhbw.ravensburg.hertel.w;
 
-import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedList;
 import de.dhbw.ravensburg.hertel.w.Queue.Queue;
-import de.dhbw.ravensburg.hertel.w.Set.Set;
-import de.dhbw.ravensburg.hertel.w.Set.SetElement;
-
-import java.sql.SQLOutput;
+import de.dhbw.ravensburg.hertel.w.Stack.Stack;
+import de.dhbw.ravensburg.hertel.w.Stack.StackElement;
 
 public class Test {
 
@@ -26,16 +23,16 @@ public class Test {
 
 
         System.out.println("______________________________________");
-        Set myset = new Set();
-        myset.push(4);
-        myset.push("zf");
-        myset.push(6);
-        System.out.println(myset.pop());
-        System.out.println(myset.pop());
-        SetElement element = new SetElement(3);
-        myset.push(element);
-        myset.push(8);
-        System.out.println(myset.search(element));
+        Stack myStack = new Stack();
+        myStack.push(4);
+        myStack.push("zf");
+        myStack.push(6);
+        System.out.println(myStack.pop());
+        System.out.println(myStack.pop());
+        StackElement element = new StackElement(3);
+        myStack.push(element);
+        myStack.push(8);
+        System.out.println(myStack.search(element));
 
 
 

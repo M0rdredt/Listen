@@ -1,21 +1,33 @@
 package de.dhbw.ravensburg.hertel.w.Stack;
 
-import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
-
 //TODO: alles
-public class StackElement extends AbstractElement {
-    @Override
+public class StackElement<T> {
+   private T value;
+   private StackElement next;
+
+    public StackElement(T value) {
+        this.value = value;
+    }
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public void setNext(StackElement next) {
+        this.next = next;
+    }
+
     public boolean hasNext() {
-        return false;
+        return next!=null;
     }
 
-    @Override
-    public Object getValue() {
-        return null;
+    public T getValue() {
+        return value;
     }
 
-    @Override
-    public AbstractElement getNext() {
-        return null;
+    public StackElement getNext() {
+        return next;
     }
+
+
 }

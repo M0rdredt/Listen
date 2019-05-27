@@ -1,48 +1,82 @@
 package de.dhbw.ravensburg.hertel.w.Set;
 
-public class Set<T>  {
-    SetElement top;
+import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
+import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
 
-    public void push(Object value){
-
-        push(new SetElement(value));
-    }
-    public void push(SetElement element){
-        if(isEmpty()){
-            top = element;
-            return;
-        }
-        else{
-            element.setNext(top);
-            top = element;
-        }
+//TODO: alles
+public class Set extends AbstractList {
+    @Override
+    public AbstractElement getHead() {
+        return null;
     }
 
-    public Object pop(){
-        SetElement element = top;
-        top = element.getNext();
-        return element.getValue();
+    @Override
+    public void swapElements(AbstractElement element1, AbstractElement element2) {
+
     }
 
-    public boolean isEmpty(){
-        return top == null;
+    @Override
+    public boolean isEmpty() {
+        return false;
     }
 
-    public SetElement peek(){
-        return top;
+    @Override
+    public int size() {
+        return 0;
     }
 
-    public int search(SetElement element){
-        int pos = 1;
-        SetElement current = top;
-        while(current!=null){
-            if(current.equals(element)){
-                return pos;
-            }
-            pos+=1;
-            current = current.getNext();
+    @Override
+    public void add(Object value) {
 
-        }
+    }
+
+    @Override
+    public void addAll(AbstractList list) {
+
+    }
+
+    @Override
+    public void removeAll() {
+
+    }
+
+    @Override
+    public boolean contains(Object value) {
+        return false;
+    }
+
+    @Override
+    public boolean containsAll(AbstractList list) {
+        return false;
+    }
+
+    @Override
+    public void removeParticularObj(Object value) {
+
+    }
+
+    @Override
+    public Object[] returnAsArray() {
+        return new Object[0];
+    }
+
+    @Override
+    public String toString() {
+        return null;
+    }
+
+    @Override
+    public void quickSort() {
+
+    }
+
+    @Override
+    public void otherSort() {
+
+    }
+
+    @Override
+    public int compareTo(Object o) {
         return 0;
     }
 }
