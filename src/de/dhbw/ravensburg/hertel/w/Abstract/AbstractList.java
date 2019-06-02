@@ -9,10 +9,22 @@ public abstract class AbstractList<T> implements Comparable, Sortable {
     public abstract boolean isEmpty();
     public abstract int size();
     public abstract void add(T value);
-    public abstract void addAll(AbstractList list);
+    public void addAll(AbstractList list){
+        for (T value:(T[]) list.returnAsArray()
+        ) {
+            this.add(value);
+        }
+    }
     public abstract void removeAll();
     public abstract boolean contains(T value);
-    public abstract boolean containsAll(AbstractList list);
+    public boolean containsAll(AbstractList list){
+        for (T value:(T[]) list.returnAsArray()
+        ) {
+            if(!this.contains(value))
+                return false;
+        }
+        return true;
+    }
     public abstract T[] returnAsArray();
     public abstract String toString();
     public abstract AbstractElement getHead();
