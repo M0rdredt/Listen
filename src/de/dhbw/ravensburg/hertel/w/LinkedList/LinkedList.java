@@ -19,6 +19,8 @@ public class LinkedList<T> extends AbstractList<T> {
     public boolean contains(T value) {
         LinkedListElement e = new LinkedListElement(value);
         LinkedListElement x = this.getHead();
+        if (x == null)
+            return false;
         while(x.hasNext()){
             if(e.equals(x.getNext()))
                 return true;
@@ -83,6 +85,7 @@ public class LinkedList<T> extends AbstractList<T> {
             LinkedListElement e = ((LinkedList) list).getHead();
             while(e.hasNext()){
                 this.add(e);
+                e = e.getNext();
             }
         }
 
