@@ -17,14 +17,15 @@ public class LinkedList<T> extends AbstractList<T> {
 
     @Override
     public boolean contains(T value) {
-        LinkedListElement e = new LinkedListElement(value);
         LinkedListElement x = this.getHead();
         if (x == null)
             return false;
+        Object xValue = x.getValue();
         while(x.hasNext()){
-            if(e.equals(x.getNext()))
+            if(value.equals(xValue))
                 return true;
             x = x.getNext();
+            xValue = x.getValue();
         }
         return false;
     }
@@ -92,16 +93,16 @@ public class LinkedList<T> extends AbstractList<T> {
     }
 
     @Override
-    public T[] returnAsArray() {
-        Class c =this.getHead().getClass();
-        T[] ts = (T[]) Array.newInstance(c,this.size());
+    public Object[] returnAsArray() {
+        Object[] ts = (Object[]) Array.newInstance(Object.class,this.size()+1);
         int counter =0;
         LinkedListElement e = this.getHead();
-        while(e.hasNext()){
-            ts[counter]=(T)e.getValue();
+        do {
+            ts[counter]=e.getValue();
             counter++;
             e = e.getNext();
-        }
+        }while(e.hasNext());
+        ts[counter]= e.getValue();
         return ts;
     }
 
