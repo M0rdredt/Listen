@@ -1,9 +1,12 @@
 package de.dhbw.ravensburg.hertel.w.Set;
 
-import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
-import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedList;
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedListElement;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 //TODO: alles
 public class Set<T> extends LinkedList {
@@ -21,34 +24,37 @@ public class Set<T> extends LinkedList {
         }
     }
 
-
-
-    public static Set getUnion(Set set1, Set set2){
-        Set toReturn = new Set();
-        toReturn.addAll(set1);
-        toReturn.addAll(set2);
-        return toReturn;
+    public static Set getUnion( Set set1, Set set2){
+        set1.addAll(set2);
+        return set1;
     }
 
-    public Set getUnion(Set set2){
-        return getUnion(this, set2);
+    public void getUnion(Set set2){
+         getUnion(this, set2);
     }
 
 
-    public Set getIntersection( Set set2){
-        return getIntersection(this, set2);
+    public void getIntersection( Set set2){
+        getIntersection(this, set2);
     }
 
-    public Set getDifferenceQuantity(Set set2){
-        return getDifferenceQuantity(this, set2);
+    public void getDifferenceQuantity(Set set2){
+        getDifferenceQuantity(this, set2);
     }
 
-    public Set getSymmetricDifference(Set set2){
-        return getSymmetricDifference(this, set2);
+    public void getSymmetricDifference(Set set2){
+        getSymmetricDifference(this, set2);
     }
 
     public static Set getIntersection(Set set1, Set set2){
-        return null;
+        LinkedListElement e = set1.getHead();
+        Set helper = new Set();
+        while (e.hasNext()){
+            if(set2.contains(e))
+                helper.add(e);
+            e=e.getNext();
+        }
+        return helper;
     }
 
     public static Set getDifferenceQuantity(Set set1, Set set2){
@@ -58,4 +64,5 @@ public class Set<T> extends LinkedList {
     public static Set getSymmetricDifference(Set set1, Set set2){
         return null;
     }
+
 }
