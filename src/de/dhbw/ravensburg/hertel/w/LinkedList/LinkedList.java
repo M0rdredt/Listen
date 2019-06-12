@@ -9,6 +9,8 @@ public class LinkedList<T> extends AbstractList<T> {
 
     private LinkedListElement head;
 
+    private static LinkedListElement preHead = new LinkedListElement(null);
+
 
     @Override
     public void removeAll() {
@@ -27,6 +29,8 @@ public class LinkedList<T> extends AbstractList<T> {
             x = x.getNext();
             xValue = x.getValue();
         }
+        if (value.equals(xValue))
+            return true;
         return false;
     }
 
@@ -165,6 +169,8 @@ public class LinkedList<T> extends AbstractList<T> {
     public void removeElement(int index){
         LinkedListElement element = getElementByIndex(index);
         LinkedListElement previous = findPreviousElement(element);
+        if(previous == preHead)
+            this.head = this.head.getNext();
         if(element == null || previous == null){
             return;
         }
@@ -245,6 +251,8 @@ public class LinkedList<T> extends AbstractList<T> {
         return currX;
     }
     private LinkedListElement findPreviousElement(LinkedListElement element){
+        if(element == this.getHead())
+            return preHead;
         if(element == null)
             return null;
         LinkedListElement prevX = null;

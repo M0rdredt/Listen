@@ -2,11 +2,6 @@ package de.dhbw.ravensburg.hertel.w.Set;
 
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedList;
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedListElement;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
 //TODO: alles
 public class Set<T> extends LinkedList {
@@ -25,44 +20,72 @@ public class Set<T> extends LinkedList {
     }
 
     public static Set getUnion( Set set1, Set set2){
-        set1.addAll(set2);
-        return set1;
+        Set toReturn = new Set();
+        toReturn.addAll(set1);
+        toReturn.addAll(set2);
+        return toReturn;
     }
 
     public void getUnion(Set set2){
-         getUnion(this, set2);
+        Set newThis = getUnion(this, set2);
+        this.removeAll();
+        this.addAll(newThis);
     }
 
 
     public void getIntersection( Set set2){
-        getIntersection(this, set2);
+        Set newThis = getIntersection(this, set2);
+        this.removeAll();
+        this.addAll(newThis);
+
+
+    }
+
+    @Override
+    public void removeParticularObj(Object value){
+        if(this.contains(value))
+            this.removeElement(this.getPositionOfObj(value));
     }
 
     public void getDifferenceQuantity(Set set2){
-        getDifferenceQuantity(this, set2);
+        Set newThis = getDifferenceQuantity(this, set2);
+        this.removeAll();
+        this.addAll(newThis);
     }
 
     public void getSymmetricDifference(Set set2){
-        getSymmetricDifference(this, set2);
+        Set newThis = getSymmetricDifference(this, set2);
+        this.removeAll();
+        this.addAll(newThis);
     }
 
     public static Set getIntersection(Set set1, Set set2){
         LinkedListElement e = set1.getHead();
-        Set helper = new Set();
+        Set toReturn = new Set();
         while (e.hasNext()){
-            if(set2.contains(e))
-                helper.add(e);
+            if(set2.contains(e.getValue()))
+                toReturn.add(e.getValue());
             e=e.getNext();
         }
-        return helper;
+        return toReturn;
     }
 
     public static Set getDifferenceQuantity(Set set1, Set set2){
-        return null;
+        LinkedListElement e = set1.getHead();
+        Set toReturn = new Set();
+        toReturn.addAll(set1);
+        while(e.hasNext()){
+            if(set2.contains(e.getValue()))
+                toReturn.removeParticularObj(e.getValue());
+            e = e.getNext();
+        }
+        return toReturn;
     }
 
     public static Set getSymmetricDifference(Set set1, Set set2){
-        return null;
+        Set helper = Set.getIntersection(set1, set2);
+        set1.getUnion(set2);
+        return Set.getDifferenceQuantity(set1, helper);
     }
 
 }
