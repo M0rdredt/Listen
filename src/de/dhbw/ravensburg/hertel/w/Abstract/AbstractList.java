@@ -17,6 +17,7 @@ public abstract class AbstractList<T> implements Comparable, Sortable {
     }
     public abstract void removeAll();
     public abstract boolean contains(T value);
+
     public boolean containsAll(AbstractList list){
         for (T value:(T[]) list.returnAsArray()
         ) {
@@ -25,9 +26,12 @@ public abstract class AbstractList<T> implements Comparable, Sortable {
         }
         return true;
     }
-    public abstract T[] returnAsArray();
+
+    public abstract Object[] returnAsArray();
     public abstract String toString();
+
     public abstract AbstractElement getHead();
+
     public abstract void swapElements(AbstractElement element1, AbstractElement element2);
 
 

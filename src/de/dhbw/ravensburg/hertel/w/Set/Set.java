@@ -2,7 +2,7 @@ package de.dhbw.ravensburg.hertel.w.Set;
 
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedList;
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedListElement;
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.Iterator;
 import java.util.Spliterator;
@@ -18,8 +18,7 @@ public class Set<T> extends LinkedList {
     }
     public void addAll(Set set){
         Object[] objects = set.returnAsArray();
-        for (Object o :
-                objects) {
+        for (Object o : objects) {
             this.add(o);
         }
     }

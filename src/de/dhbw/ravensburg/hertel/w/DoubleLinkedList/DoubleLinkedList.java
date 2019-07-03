@@ -135,7 +135,7 @@ public class DoubleLinkedList<T> extends AbstractList {
         if (currX == null || currY == null) {
             return;
         }
-    /*    if (prevX != null) {
+       if (prevX != null) {
             prevX.setNext(currY);
         } else {
             setHead(currY);
@@ -144,7 +144,7 @@ public class DoubleLinkedList<T> extends AbstractList {
             prevY.setNext(currX);
         } else {
             setHead(currX);
-        }*/
+        }
         DoubleLinkedListElement temp1 = currX;
         DoubleLinkedListElement temp2 =currX.getPrevious();
         if (!successive) {

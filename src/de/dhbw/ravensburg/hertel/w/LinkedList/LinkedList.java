@@ -42,8 +42,6 @@ public class LinkedList<T> extends AbstractList<T> {
         return true;
     }
 
-
-
     @Override
     public boolean isEmpty() {
         return  this.getHead() == null;
@@ -78,7 +76,6 @@ public class LinkedList<T> extends AbstractList<T> {
         updateIndices();
 
     }
-
 
     @Override
     public void addAll(AbstractList list) {
