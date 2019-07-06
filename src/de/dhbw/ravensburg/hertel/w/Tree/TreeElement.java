@@ -1,21 +1,14 @@
 package de.dhbw.ravensburg.hertel.w.Tree;
 
-import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
+public class TreeElement {
 
-//TODO: alles
-public class TreeElement extends AbstractElement {
-    @Override
-    public boolean hasNext() {
-        return false;
-    }
+        public Number value;
+        TreeElement left, right;
+        TreeElement(Number n)
+        {
+            value = n;
+            left = null;
+            right = null;
+        }
 
-    @Override
-    public Object getValue() {
-        return null;
-    }
-
-    @Override
-    public AbstractElement getNext() {
-        return null;
-    }
 }
