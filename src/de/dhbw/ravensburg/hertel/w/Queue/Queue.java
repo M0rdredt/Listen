@@ -2,18 +2,15 @@ package de.dhbw.ravensburg.hertel.w.Queue;
 
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
 
-//TODO: alles
 public class Queue<T> {
     QueueElement head;
     QueueElement tail;
-
 
     public boolean isEmpty() {
         return head == null;
     }
 
     public int size() {
-
         int counterIndexSize = 1;
         QueueElement counterElementSize = head;
 
@@ -26,7 +23,6 @@ public class Queue<T> {
         }
         return counterIndexSize;
     }
-
 
     public void add(Object value) {
         add(new QueueElement(value));
@@ -46,15 +42,19 @@ public class Queue<T> {
 
     public QueueElement poll(){
         QueueElement element = head;
+        QueueElement returnElement = element;
         if(element.hasNext()){
+
             head=element.getNextElement();
+            return returnElement;
         }
-        else{
+        else {
             head = null;
             tail = null;
+            return null;
         }
-        return element;
     }
+
     public void removeAll() {
         if (!isEmpty())
             tail = null;
@@ -74,15 +74,6 @@ public class Queue<T> {
             compare = compare.getNextElement();
         }
         return false;
-    }
-
-    public boolean containsAll(AbstractList list) {
-        return false;
-    }
-
-    public Object[] returnAsArray() {
-
-        return new Object[0];
     }
 
     public String toString() {

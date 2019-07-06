@@ -19,9 +19,8 @@ public class Stack<T>  {
     }
 
     public Object pop(){
-        StackElement element = top;
-        top = element.getNext();
-        return element.getValue();
+        top =  top.getNext();
+        return top.getValue();
     }
 
     public boolean isEmpty(){
@@ -33,16 +32,43 @@ public class Stack<T>  {
     }
 
     public int search(StackElement element){
+        int pos =1;
+        StackElement current = top;
+        while(current !=null) {
+            if (current.equals(element))
+                return pos;
+            pos +=1;
+            current = current.getNext();
+        }
+        return 0;
+    }
+    public int search(Object o){
         int pos = 1;
         StackElement current = top;
         while(current!=null){
-            if(current.equals(element)){
+            if(current.getValue().equals(o)){
                 return pos;
             }
             pos+=1;
             current = current.getNext();
-
         }
         return 0;
+    }
+
+    public String toString() {
+
+        StringBuilder bs = new StringBuilder("[");
+        if (top != null) {
+            StackElement element = top;
+            while (element.hasNext()) {
+                bs.append(element.getValue().toString()).append(", ");
+                element = element.getNext();
+            }
+            if (!element.hasNext() && element.getValue() != null) {
+                bs.append(element.getValue().toString());
+            }
+        }
+        bs.append("]");
+        return bs.toString();
     }
 }

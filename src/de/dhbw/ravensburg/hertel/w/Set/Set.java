@@ -13,8 +13,7 @@ public class Set<T> extends LinkedList {
     }
     public void addAll(Set set){
         Object[] objects = set.returnAsArray();
-        for (Object o :
-                objects) {
+        for (Object o : objects) {
             this.add(o);
         }
     }
