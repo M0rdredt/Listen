@@ -10,5 +10,13 @@ public class TreeElement {
             left = null;
             right = null;
         }
+        boolean contains(Number v){
+            TreeElement e = this;
+            if(v.doubleValue()>left.value.doubleValue())
+                return right.contains(v);
+            if(v.doubleValue()<left.value.doubleValue())
+                return left.contains(v);
+            return this.value.doubleValue() == v.doubleValue() || left.value.doubleValue() == v.doubleValue() || right.value.doubleValue() == v.doubleValue();
+        }
 
 }
