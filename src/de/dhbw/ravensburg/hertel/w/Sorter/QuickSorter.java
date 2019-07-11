@@ -3,33 +3,54 @@ package de.dhbw.ravensburg.hertel.w.Sorter;
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
 import de.dhbw.ravensburg.hertel.w.Abstract.SortableList;
 
-public class QuickSorter {
+public class QuickSorter<T> {
+
+    private static Number[] array;
     public AbstractList quickSort(SortableList list) {
-        Class clazz = list.getClass();
         if(!(list.getHead().getValue() instanceof Number))
-            throw new IllegalArgumentException(list+"does not contain numbers and is for this reason not sortable")
+            throw new IllegalArgumentException(list+"do" +
+                    "es not contain numbers and is for this reason not sortable");
+        array = (Number[])list.returnAsArray();
+        list.removeAll();
+        for (Number num :
+                quickSortTheInternalRealThingything(0, array.length-1)) {
+            list.add((T) num);
+        }
+        return (AbstractList) list;
     }
 
-    int partition(int l, int r) {
+    private Number[] quickSortTheInternalRealThingything(int l, int r){
+        int q;
+        if (l < r) {
+            q = partition(l, r);
+            quickSortTheInternalRealThingything(l, q);
+            quickSortTheInternalRealThingything(q + 1, r);
+        }
+        return array;
+    }
 
-        int i, j, x = intArr[(l + r) / 2];
-        i = l - 1;
-        j = r + 1;
+
+    private int partition(int l, int r) {
+
+        int indexToReturn, internalIndex;
+        double  theOnlyRealValue = array[(l + r) / 2].doubleValue();
+        internalIndex = l - 1;
+        indexToReturn = r + 1;
         while (true) {
             do {
-                i++;
-            } while (intArr[i] < x);
+                internalIndex++;
+            } while (array[internalIndex].doubleValue() < theOnlyRealValue);
 
             do {
-                j--;
-            } while (intArr[j] > x);
+                indexToReturn--;
+            } while (array[indexToReturn].doubleValue() > theOnlyRealValue);
 
-            if (i < j) {
-                int k = intArr[i];
-                intArr[i] = intArr[j];
-                intArr[j] = k;
+            if (internalIndex < indexToReturn) {
+                double k = array[internalIndex].doubleValue();
+                array[internalIndex] = array[indexToReturn];
+                array[indexToReturn] = k;
             } else {
-                return j;
+                return indexToReturn;
             }
         }
     }
