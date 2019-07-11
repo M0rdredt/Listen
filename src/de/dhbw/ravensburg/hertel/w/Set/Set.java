@@ -1,17 +1,24 @@
 package de.dhbw.ravensburg.hertel.w.Set;
 
+import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedList;
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedListElement;
 
-//TODO: alles
 public class Set<T> extends LinkedList {
 
+    /**
+     * @param value is the Element added to this Set
+     */
     @Override
     public void add(Object value){
         if(!super.contains(value))
             super.add(value);
     }
-    public void addAll(Set set){
+
+    /**
+     * @param set adds all elements from this list to this
+     */
+    public void addAll(AbstractList set){
         Object[] objects = set.returnAsArray();
         for (Object o : objects) {
             this.add(o);

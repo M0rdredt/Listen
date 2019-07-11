@@ -9,14 +9,26 @@ public class Tree<T extends Number> {
     private TreeElement root;
     private int size;
 
+    /**
+     *
+     * @return true if the Tree is empty(root is null)
+     */
     public boolean isEmpty(){
         return root == null;
     }
 
+    /**
+     * removes all elements from the Tree
+     */
     public void removeAll(){
         root = null;
     }
 
+    /**
+     *
+     * @param list contains all the Elements that will be added to the tree
+     * @throws NumberFormatException if the elements contained in the list are not Numbers
+     */
     public void addAll(AbstractList list){
         Object[] array = list.returnAsArray();
         for (Object e :
@@ -29,10 +41,21 @@ public class Tree<T extends Number> {
 
     }
 
+    /**
+     *
+     * @param x is the element that must be contained
+     * @return will be true if x is contained
+     */
+
     public boolean contains(Number x){
         TreeElement y = root;
         return root.contains(x);
     }
+
+    /**
+     *
+     * @return the tree as a Number[] as Number is the only Datatype useful in a tree
+     */
 
     public Number[] returnAsArray(){
         LinkedList helper = returnAsLinkedList(root);
@@ -49,6 +72,12 @@ public class Tree<T extends Number> {
        return toReturn;
 
     }
+
+    /**
+     *
+     * @param list are all Elements which are tested if they are contained within the tree
+     * @return true if all Elements from list are contained within tree
+     */
 
     public boolean containsAll(AbstractList list){
         Object[] array = list.returnAsArray();
@@ -67,23 +96,40 @@ public class Tree<T extends Number> {
 
     }
 
+    /**
+     *
+     * @param v will set the first Element of the tree
+     */
     public Tree(Number v)
     {
         root = new TreeElement(v);
     }
 
+    /**
+     * as there is no first Element given it will be 0 to prevent a NullPointerException
+     */
     public Tree(){
         root = new TreeElement(0);
     }
 
+    /**
+     * removes the specified element @param v from the tree
+     */
     public void removeElement(Number v){
         removeElementIntern(v);
     }
 
+    /**
+     *
+     * @return the size of the tree
+     */
     public int size(){
         return size;
     }
 
+    /**
+     * @param v is the element which will be added to the tree
+     */
     public void add(Number v)
     {
         root = addIntern(v,root);
