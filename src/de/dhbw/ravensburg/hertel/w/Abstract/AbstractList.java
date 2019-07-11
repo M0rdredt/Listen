@@ -15,8 +15,6 @@ public abstract class AbstractList<T> {
     public abstract boolean containsAll(AbstractList list);
     public abstract Object[] returnAsArray();
     public abstract String toString();
-    public abstract AbstractElement getHead();
-    public abstract void swapElements(AbstractElement element1, AbstractElement element2);
 
 
     public abstract void removeParticularObj(Object value);

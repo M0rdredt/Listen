@@ -1,10 +1,11 @@
 package de.dhbw.ravensburg.hertel.w.DoubleLinkedList;
 
-import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
+import de.dhbw.ravensburg.hertel.w.Abstract.SortableList;
+import de.dhbw.ravensburg.hertel.w.Abstract.SortableListElement;
 
 //TODO: alles
-public class DoubleLinkedList<T> extends AbstractList {
+public class DoubleLinkedList<T> extends AbstractList implements SortableList {
 
     private DoubleLinkedListElement head;
     private DoubleLinkedListElement tail;
@@ -88,20 +89,6 @@ public class DoubleLinkedList<T> extends AbstractList {
         return bs.toString();
     }
 
-    @Override
-    public void quickSort() {
-
-    }
-
-    @Override
-    public void otherSort() {
-
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
 
     private int updateIndices(){
         if(this.getHead()!=null) {
@@ -121,7 +108,7 @@ public class DoubleLinkedList<T> extends AbstractList {
             return 0; //return number for size()
     }
 
-    public void swapElements(AbstractElement element1, AbstractElement element2) {
+    public void swapElements(SortableListElement element1, SortableListElement element2) {
         Object xVal = element1.getValue();
         Object yVal = element2.getValue();
         if (xVal == yVal) {

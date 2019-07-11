@@ -1,11 +1,12 @@
 package de.dhbw.ravensburg.hertel.w.DoubleLinkedList;
 
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
+import de.dhbw.ravensburg.hertel.w.Abstract.SortableListElement;
 
 //TODO: alles
-public class DoubleLinkedListElement<T> extends AbstractElement {
+public class DoubleLinkedListElement<T> extends AbstractElement implements SortableListElement {
 
-    private T value;
+    private Object value;
     private DoubleLinkedListElement previous;
     private DoubleLinkedListElement next;
     private int index;
@@ -20,7 +21,7 @@ public class DoubleLinkedListElement<T> extends AbstractElement {
 
 
     //Getter & Setter
-    public T getValue() {
+    public Object getValue() {
         return value;
     }
 
@@ -48,7 +49,7 @@ public class DoubleLinkedListElement<T> extends AbstractElement {
         return index;
     }
 
-    public void setIndex(int index) {
+    void setIndex(int index) {
         this.index = index;
     }
 }

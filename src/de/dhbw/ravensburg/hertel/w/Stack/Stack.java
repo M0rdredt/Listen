@@ -1,7 +1,7 @@
 package de.dhbw.ravensburg.hertel.w.Stack;
 
 public class Stack<T>  {
-    StackElement top;
+    private StackElement top;
 
     public void push(Object value){
 
@@ -10,7 +10,6 @@ public class Stack<T>  {
     public void push(StackElement element){
         if(isEmpty()){
             top = element;
-            return;
         }
         else{
             element.setNext(top);
