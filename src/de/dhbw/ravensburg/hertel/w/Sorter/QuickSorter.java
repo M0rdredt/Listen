@@ -5,7 +5,12 @@ import de.dhbw.ravensburg.hertel.w.Abstract.SortableList;
 
 public class QuickSorter<T> {
 
-    private static Number[] array;
+    private Number[] array;
+
+    /**Uses the quick-Sort algorithm on the given list
+     * @param list any list that implements the Sortable interface
+     * @return a sorted list
+     */
     public AbstractList quickSort(SortableList list) {
         if(!(list.getHead().getValue() instanceof Number))
             throw new IllegalArgumentException(list+"do" +

@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9d9c1dc-bebe-4a42-a8e3-54c2d0f941fa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/de/dhbw/ravensburg/hertel/w/Sorter/SimpleSorter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dhbw/ravensburg/hertel/w/Sorter/QuickSorter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dhbw/ravensburg/hertel/w/Sorter/QuickSorter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dhbw/ravensburg/hertel/w/Sorter/SimpleSorter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dhbw/ravensburg/hertel/w/Sorter/SimpleSorter.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +44,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dhbw/ravensburg/hertel/w/Sorter/QuickSorter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+            <state relative-caret-position="153">
+              <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="12" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -55,8 +56,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/de/dhbw/ravensburg/hertel/w/Sorter/SimpleSorter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+            <state relative-caret-position="323">
+              <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -229,27 +230,6 @@
               <item name="Listen" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="w" type="462c0819:PsiDirectoryNode" />
-              <item name="Abstract" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Listen" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Listen" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="w" type="462c0819:PsiDirectoryNode" />
-              <item name="LinkedList" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Listen" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Listen" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="w" type="462c0819:PsiDirectoryNode" />
-              <item name="Set" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Listen" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Listen" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="w" type="462c0819:PsiDirectoryNode" />
               <item name="Sorter" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -319,7 +299,7 @@
       <workItem from="1556627356745" duration="5610000" />
       <workItem from="1556634549695" duration="2431000" />
       <workItem from="1556652951670" duration="697000" />
-      <workItem from="1562876397134" duration="335000" />
+      <workItem from="1562876397134" duration="887000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented swapElements of Linked List -&gt; should now work fine&#10;Implemented BubbleSort -&gt; doesnt work with 2 elements of same value&#10;Some other changes">
       <created>1556525056934</created>
@@ -377,11 +357,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562876208428</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implemented SimpelSort">
+      <created>1562876905948</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1562876905948</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35620000" />
+    <option name="totallyTimeSpent" value="36172000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1377" height="692" extended-state="6" />
@@ -504,7 +491,8 @@
     <MESSAGE value="extended abstract methods -&gt; make Sortingalgorithm with abstracts objects possible&#10;extended DLL&#10;currently looking to implement bubbleSort for DLL -&gt; still a bit of work... this Bubblesort is will NPE" />
     <MESSAGE value="A little bit of refactoring and started quickSort" />
     <MESSAGE value="Finished QuickSort but untested" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished QuickSort but untested" />
+    <MESSAGE value="Implemented SimpelSort" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented SimpelSort" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -675,20 +663,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dhbw/ravensburg/hertel/w/Sorter/SimpleSorter.java">
+    <entry file="file://$PROJECT_DIR$/src/de/dhbw/ravensburg/hertel/w/Sorter/QuickSorter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        <state relative-caret-position="153">
+          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="12" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dhbw/ravensburg/hertel/w/Sorter/QuickSorter.java">
+    <entry file="file://$PROJECT_DIR$/src/de/dhbw/ravensburg/hertel/w/Sorter/SimpleSorter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+        <state relative-caret-position="323">
+          <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

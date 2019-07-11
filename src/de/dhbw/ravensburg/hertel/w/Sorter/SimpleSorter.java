@@ -6,6 +6,11 @@ import de.dhbw.ravensburg.hertel.w.Abstract.SortableList;
 public class SimpleSorter<T> {
 
     private Number[] array;
+
+    /**Uses a simple-Sort algorithm on the given list
+     * @param list any list that implements the Sortable interface
+     * @return a sorted list
+     */
     public AbstractList simpleSort(SortableList list) {
         if(!(list.getHead().getValue() instanceof Number))
             throw new IllegalArgumentException(list+"do" +
