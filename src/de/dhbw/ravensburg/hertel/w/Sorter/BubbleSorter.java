@@ -5,42 +5,38 @@ import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedList;
 import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedListElement;
 
+
 public class BubbleSorter<T> {
 
     //ToDo: make it work if there are 2 elements of same numerical value
-    public void bubbleSort(AbstractList list){
-        AbstractElement element;
-        int i =0;
+    public void bubbleSort(AbstractList list) {
+        AbstractElement element = list.getHead();
+        AbstractElement element2 = element.getNext();
 
-        boolean sorted=false;
-            while (!sorted){
-                element = list.getHead();
-                boolean hasSwitched = false;
-
-            while (element != null && element.hasNext()) {
-                if (element.getValue() instanceof Number && element.getNext().getValue() instanceof Number) {
-                    Number first = (Number) element.getValue();
-                    Number second = (Number) element.getNext().getValue();
-                    if (first.doubleValue() > second.doubleValue()) {
-                        list.swapElements(element, element.getNext());
-                        hasSwitched = true;
-                        continue;
-                    }
-                    if(!hasSwitched){
-                        element = element.getNext();
-                    }
-                    else{
-                        element = list.getHead();
-                    }
-                }
+        while (element != null) {
+            if (!this.isNumeric(element.getValue())) {
+                Exception e = new Exception();
+                System.err.println("In Ihrer Liste befinden sich unsortierbare Objekte");
+                return;
             }
-            if (!element.hasNext() && !hasSwitched){
-                sorted = true;
-            }
-            i++;
+            element = element.getNext();
+        }
+        element = list.getHead();
 
+        while (element2 != null) {
+            while (element != null) {
+
+
+            }
         }
     }
 
 
+
+
+
+    private boolean isNumeric(Object value){
+            return value instanceof Number;
+        }
 }
+

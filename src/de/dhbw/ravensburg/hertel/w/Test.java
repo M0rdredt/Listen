@@ -1,6 +1,8 @@
 package de.dhbw.ravensburg.hertel.w;
 
+import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedList;
 import de.dhbw.ravensburg.hertel.w.Queue.Queue;
+import de.dhbw.ravensburg.hertel.w.Sorter.BubbleSorter;
 import de.dhbw.ravensburg.hertel.w.Stack.Stack;
 import de.dhbw.ravensburg.hertel.w.Stack.StackElement;
 
@@ -28,6 +30,14 @@ public class Test {
     System.out.println(myStack.search(7));
     System.out.println(myStack);
     System.out.println("------------------------------");
+        System.out.println("listentest");
+        LinkedList list = new LinkedList<>();
+        list.add(5);
+        list.add(3);
+        list.add(7);
+        list.add(2);
+        BubbleSorter sorter = new BubbleSorter();
+        sorter.bubbleSort(list);
 
 
 
