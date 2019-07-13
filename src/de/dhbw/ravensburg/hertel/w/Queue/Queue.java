@@ -1,10 +1,8 @@
 package de.dhbw.ravensburg.hertel.w.Queue;
 
-import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
-
 public class Queue<T> {
-    QueueElement head;
-    QueueElement tail;
+    private QueueElement head;
+    private QueueElement tail;
 
     public boolean isEmpty() {
         return head == null;
@@ -42,11 +40,10 @@ public class Queue<T> {
 
     public QueueElement poll(){
         QueueElement element = head;
-        QueueElement returnElement = element;
         if(element.hasNext()){
 
             head=element.getNextElement();
-            return returnElement;
+            return element;
         }
         else {
             head = null;

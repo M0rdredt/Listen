@@ -2,12 +2,16 @@ package de.dhbw.ravensburg.hertel.w.LinkedList;
 
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
+import de.dhbw.ravensburg.hertel.w.Abstract.SortableList;
+import de.dhbw.ravensburg.hertel.w.Abstract.SortableListElement;
 
 import java.lang.reflect.Array;
 
-public class LinkedList<T> extends AbstractList<T> {
+public class LinkedList<T> extends AbstractList<T> implements SortableList {
 
     private LinkedListElement head;
+
+    private static LinkedListElement preHead = new LinkedListElement(null);
 
 
     @Override
@@ -27,6 +31,8 @@ public class LinkedList<T> extends AbstractList<T> {
             x = x.getNext();
             xValue = x.getValue();
         }
+        if (value.equals(xValue))
+            return true;
         return false;
     }
 
@@ -128,21 +134,6 @@ public class LinkedList<T> extends AbstractList<T> {
         return bs.toString();
     }
 
-    @Override
-    public void quickSort() {
-        //TODO:impl
-    }
-
-    @Override
-    public void otherSort() {
-        //TODO://impl
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-        //TODO:impl
-    }
 
     public void addElementAtCertainPosition(T value,int index){
         LinkedListElement newElement = new LinkedListElement(value);
@@ -162,6 +153,8 @@ public class LinkedList<T> extends AbstractList<T> {
     public void removeElement(int index){
         LinkedListElement element = getElementByIndex(index);
         LinkedListElement previous = findPreviousElement(element);
+        if(previous == preHead)
+            this.head = this.head.getNext();
         if(element == null || previous == null){
             return;
         }
@@ -197,7 +190,7 @@ public class LinkedList<T> extends AbstractList<T> {
     }
 
     //should now work fine
-    public void swapElements(AbstractElement element1, AbstractElement element2) {
+    public void swapElements(SortableListElement element1, SortableListElement element2) {
         Object xVal = element1.getValue();
         Object yVal = element2.getValue();
        if (xVal == yVal) {
@@ -242,6 +235,8 @@ public class LinkedList<T> extends AbstractList<T> {
         return currX;
     }
     private LinkedListElement findPreviousElement(LinkedListElement element){
+        if(element == this.getHead())
+            return preHead;
         if(element == null)
             return null;
         LinkedListElement prevX = null;
