@@ -7,7 +7,7 @@ import de.dhbw.ravensburg.hertel.w.Abstract.SortableListElement;
 
 import java.lang.reflect.Array;
 
-public class LinkedList<T> extends AbstractList<T> implements SortableList {
+public class LinkedList<T> extends AbstractList<T> implements SortableList<T> {
 
     private LinkedListElement head;
 
@@ -92,7 +92,6 @@ public class LinkedList<T> extends AbstractList<T> implements SortableList {
                 e = e.getNext();
             }
         }
-
     }
 
     @Override
@@ -187,37 +186,6 @@ public class LinkedList<T> extends AbstractList<T> implements SortableList {
     public int getPositionOfObj(T value){
         return findElementbyValue(value).getIndex();
 
-    }
-
-    //should now work fine
-    public void swapElements(SortableListElement element1, SortableListElement element2) {
-        Object xVal = element1.getValue();
-        Object yVal = element2.getValue();
-       if (xVal == yVal) {
-           return;
-        }
-        LinkedListElement currX = (LinkedListElement) element1;
-        LinkedListElement currY = (LinkedListElement) element2;
-        LinkedListElement prevX = findPreviousElement(currX);
-        LinkedListElement prevY = findPreviousElement(currY);
-        if(currX == null || currY == null){
-            return;
-        }
-        if (prevX != null) {
-            prevX.setNext(currY);
-        }
-        else {
-            setHead(currY);
-        }
-        if(prevY != null){
-            prevY.setNext(currX);
-        }
-        else{
-            setHead(currX);
-        }
-        LinkedListElement temp = currX.getNext();
-        currX.setNext(currY.getNext());
-        currY.setNext(temp);
     }
 
     @Override

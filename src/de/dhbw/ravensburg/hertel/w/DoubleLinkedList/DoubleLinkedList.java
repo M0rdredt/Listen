@@ -3,6 +3,9 @@ package de.dhbw.ravensburg.hertel.w.DoubleLinkedList;
 import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
 import de.dhbw.ravensburg.hertel.w.Abstract.SortableList;
 import de.dhbw.ravensburg.hertel.w.Abstract.SortableListElement;
+import de.dhbw.ravensburg.hertel.w.LinkedList.LinkedListElement;
+
+import java.lang.reflect.Array;
 
 //TODO: alles
 public class DoubleLinkedList<T> extends AbstractList implements SortableList {
@@ -69,7 +72,16 @@ public class DoubleLinkedList<T> extends AbstractList implements SortableList {
 
     @Override
     public Object[] returnAsArray() {
-        return new Object[0];
+        Object[] ts = (Object[]) Array.newInstance(Object.class,this.size());
+        int counter =0;
+        DoubleLinkedListElement e = this.getHead();
+        do {
+            ts[counter]=e.getValue();
+            counter++;
+            e = e.getNext();
+        }while(e.hasNext());
+        ts[counter]= e.getValue();
+        return ts;
     }
 
     @Override
@@ -108,55 +120,6 @@ public class DoubleLinkedList<T> extends AbstractList implements SortableList {
             return 0; //return number for size()
     }
 
-    public void swapElements(SortableListElement element1, SortableListElement element2) {
-        Object xVal = element1.getValue();
-        Object yVal = element2.getValue();
-        if (xVal == yVal) {
-            return;
-        }
-        DoubleLinkedListElement currX = (DoubleLinkedListElement) element1;
-        DoubleLinkedListElement currY = (DoubleLinkedListElement) element2;
-        DoubleLinkedListElement prevX = findPreviousElement(currX);
-        DoubleLinkedListElement prevY = findPreviousElement(currY);
-        boolean successive = areSuccessiveElements(currX, currY);
-        if (currX == null || currY == null) {
-            return;
-        }
-       if (prevX != null) {
-            prevX.setNext(currY);
-        } else {
-            setHead(currY);
-        }
-        if (prevY != null) {
-            prevY.setNext(currX);
-        } else {
-            setHead(currX);
-        }
-        DoubleLinkedListElement temp1 = currX;
-        DoubleLinkedListElement temp2 =currX.getPrevious();
-        if (!successive) {
-            currX.setPrevious(currY.getPrevious());
-            currX.setNext(currY.getNext());
-            currY.getPrevious().setNext(currX);
-            if(currY.hasNext()) {
-                currY.getNext().setPrevious(currX);
-            }
-            currY.setPrevious(temp1.getPrevious());
-            currY.setNext(temp1.getNext());
-            if(temp1.getPrevious()!=null){
-                temp1.getPrevious().setNext(currY);
-            }
-            temp1.getNext().setPrevious(currY);
-        }
-        else{
-            currX.setNext(currY.getNext());
-            currX.setPrevious(currY);
-            currY.getNext().setPrevious(currX);
-            currY.setNext(currX);
-            currY.setPrevious(temp2);
-            temp1.getPrevious().getPrevious().setNext(currY);
-        }
-    }
 
     private DoubleLinkedListElement findPreviousElement(DoubleLinkedListElement element){
         if(element.getPrevious()!=null){
