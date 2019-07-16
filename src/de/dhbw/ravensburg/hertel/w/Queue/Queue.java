@@ -1,90 +1,92 @@
 package de.dhbw.ravensburg.hertel.w.Queue;
 
-import de.dhbw.ravensburg.hertel.w.Abstract.AbstractList;
+public class Queue<T> {
+    private QueueElement head;
+    private QueueElement tail;
 
-//TODO: alles
-public class Queue<T> extends AbstractList {
-    QueueElement firstElement;
-    QueueElement lastElement;
-
-    @Override
     public boolean isEmpty() {
-        return firstElement==null;
+        return head == null;
     }
 
-    @Override
     public int size() {
-        return 0;
+        int counterIndexSize = 1;
+        QueueElement counterElementSize = head;
+
+        if (isEmpty())
+            return 0;
+
+        while (counterElementSize.getNextElement() != null) {
+            counterIndexSize++;
+            counterElementSize = counterElementSize.getNextElement();
+        }
+        return counterIndexSize;
     }
 
-    @Override
     public void add(Object value) {
         add(new QueueElement(value));
     }
-    public void add(QueueElement element){
-        if(this.isEmpty()){
-            firstElement = element;
+
+    public void add(QueueElement element) {
+        if (this.isEmpty()) {
+            head = element;
             element.setIndex(0);
-            lastElement = element;
+            tail = element;
+        } else {
+            tail.setNextElement(element);
+            element.setIndex(tail.getIndex() + 1);
+            tail = element;
+        }
+    }
+
+    public QueueElement poll(){
+        QueueElement element = head;
+        if(element.hasNext()){
+
+            head=element.getNextElement();
+            return element;
         }
         else {
-            lastElement.setNextElement(element);
-            element.setIndex(lastElement.getIndex() + 1);
-            lastElement = element;
-
+            head = null;
+            tail = null;
+            return null;
         }
-
-
     }
 
-    @Override
-    public void addAll(AbstractList list) {
-
-    }
-
-    @Override
     public void removeAll() {
-
+        if (!isEmpty())
+            tail = null;
+        head = null;
     }
 
-    @Override
+    public QueueElement peek(){
+        return head;
+    }
+
     public boolean contains(Object value) {
         QueueElement element = new QueueElement(value);
+        QueueElement compare = head;
+        while (compare.getNextElement() != null) {
+            if (element.getValue().equals(compare.getValue()))
+                return true;
+            compare = compare.getNextElement();
+        }
         return false;
     }
 
-    @Override
-    public boolean containsAll(AbstractList list) {
-        return false;
-    }
-
-    @Override
-    public Object[] returnAsArray() {
-        return new Object[0];
-    }
-
-    @Override
     public String toString() {
-        return null;
-    }
 
-    @Override
-    public void bubbleSort() {
-
-    }
-
-    @Override
-    public void quickSort() {
-
-    }
-
-    @Override
-    public void otherSort() {
-
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        return 0;
+        StringBuilder bs = new StringBuilder("[");
+        if (head != null) {
+            QueueElement element = head;
+            while (element.hasNext()) {
+                bs.append(element.getValue().toString()).append(", ");
+                element = element.getNextElement();
+            }
+            if (!element.hasNext() && element.getValue() != null) {
+                bs.append(element.getValue().toString());
+            }
+        }
+        bs.append("]");
+        return bs.toString();
     }
 }

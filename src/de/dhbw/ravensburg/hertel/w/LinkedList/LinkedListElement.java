@@ -1,31 +1,46 @@
 package de.dhbw.ravensburg.hertel.w.LinkedList;
 
-public class LinkedListElement<T> {
+import de.dhbw.ravensburg.hertel.w.Abstract.AbstractElement;
+import de.dhbw.ravensburg.hertel.w.Abstract.SortableListElement;
+
+public class LinkedListElement<T> implements SortableListElement {
     //TODO: Evtl. AbstractElement?
     private T value;
     private LinkedListElement next;
+    private int index = 0;
 
     LinkedListElement(T value) {
         this.value=value;
     }
     //Todo: write equals method
-    T getValue() {
+    public T getValue() {
         return value;
     }
 
-    public void setValue(T value) {
+    void setValue(T value) {
         this.value = value;
     }
 
-    LinkedListElement getNext() {
-        return next;
+    public LinkedListElement getNext() {
+        if(next!=null)
+            return next;
+        else
+            return null;
     }
 
     void setNext(LinkedListElement next) {
         this.next = next;
     }
+
     public boolean hasNext(){
         return next!=null;
     }
 
+    void setIndex(int index){
+        this.index=index;
+    }
+
+    int getIndex() {
+        return index;
+    }
 }
